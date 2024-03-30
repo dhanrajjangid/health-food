@@ -15,7 +15,7 @@ import {
 } from "react-icons/ai";
 import ProfileImg from "@/assets/images/profile.jpg";
 import { useNavigate } from "react-router-dom";
-import { actions } from "@/redux/slices/";
+import { actions } from "@/redux/slices/sidebarSlice";
 import {
   SidebarContainer,
   SidebarNav,
