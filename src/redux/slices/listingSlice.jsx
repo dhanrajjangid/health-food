@@ -1,26 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  playersList: [],
-  teamsList: [],
-  teamDetails: {}
+  cartList: []
 };
 
-const authSlice = createSlice({
+const listingSlice = createSlice({
   name: 'listing',
   initialState,
   reducers: {
-    setPlayerListState: (state, action) => {
-      state.playersList = action.payload;
+    setCartState: (state, action) => {
+      const newItem = action.payload;
+      const existingItem = state.cartList.find(item => item.id === newItem.id);
+      
+      if (existingItem) {
+        existingItem.quantity += newItem.quantity; 
+      } else {
+        state.cartList.push(newItem);
+      }
     },
-    setTeamListState: (state, action) => {
-      state.teamsList = action.payload;
-    },
-    setTeamDetails: (state, action) => {
-      state.teamDetails = action.payload;
-    },
+    removeCartItem: (state, action) => {
+      const itemIdToRemove = action.payload; // Assuming your payload has an 'id' field
+      state.cartList = state.cartList.filter(item => item.id !== itemIdToRemove);
+    }
   },
 });
 
-export const { actions, reducer } = authSlice;
-export default authSlice.reducer;
+export const { actions, reducer } = listingSlice;
+export default listingSlice.reducer;

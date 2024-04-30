@@ -9,6 +9,9 @@ import { actions as authActions} from '@/redux/slices/authSlice'
 import Profile from "@/view/Profile";
 import ItemDetail from "@/view/ItemDetail"
 import CartButton from "../components/CartButton";
+import Cart from "../view/Cart";
+import OrderConfirm from "../view/Cart/Components/OrderConfirm";
+import PreviousOrders from "../view/PreviousOrders";
 
 
 const PrivateLayout = ({ children }) => {
@@ -70,7 +73,19 @@ const privateRoutes = [
         element: <Profile />,
       },
       {
-        path: "/item-detail",
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/order-confirm",
+        element: <OrderConfirm />,
+      },
+      {
+        path: "/previous-orders",
+        element: <PreviousOrders />,
+      },
+      {
+        path: "/item-detail/:id",
         element: <ItemDetail />,
       },
     ],

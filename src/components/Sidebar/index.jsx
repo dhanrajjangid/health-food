@@ -51,6 +51,16 @@ const Sidebar = () => {
       icon: <AiOutlineHome />,
     },
     {
+      title: "Cart",
+      path: "/cart",
+      icon: <AiOutlineShoppingCart />,
+    },
+    {
+      title: "My Orders",
+      path: "/previous-orders",
+      icon: <AiOutlineBook />,
+    },
+    {
       title: "Profile",
       path: "/profile",
       icon: <AiOutlineUserProfile />,

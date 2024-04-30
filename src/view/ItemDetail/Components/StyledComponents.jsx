@@ -46,11 +46,7 @@ export const flexSpaceBetween = {
   };
 
   export const ButtonContainer = styled.div`
-  width: calc(100% - 40px);
-  position: fixed;
-  bottom: 30px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  margin-top: 20px;
+  width: 100%;
   gap: 1rem;
-  place-content: center;
 `;

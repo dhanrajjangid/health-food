@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "./style.css";
 import {
   flexSpaceBetween,
@@ -14,8 +14,31 @@ import {
   OutlinedButton,
   ContainedButton,
 } from "../../components/Common/FormInputs";
+import { products } from "../../utils/productData";
+import { useDispatch } from "react-redux";
+import { actions } from "@/redux/slices/listingSlice";
+import { toast } from "react-toastify";
 const ItemDetail = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+  const [productDetails, setProductDetails] = useState({});
+
+  useEffect(() => {
+    if (products?.length && id) {
+      const filteredProducts = products.find(
+        (product) => product.id === Number(id)
+      );
+      // const data = products?.filter(product => product.id === id);
+      setProductDetails(filteredProducts);
+    }
+  }, [products, id]);
+  const addToCart = () => {
+    dispatch(actions.setCartState(productDetails));
+    toast.success("Item Added to cart");
+  };
+
   return (
     <MainDiv>
       <LeftArrow onClick={() => navigate("/home")} />{" "}
@@ -24,10 +47,10 @@ const ItemDetail = () => {
         alt="ABC"
       />
       <div style={flexSpaceBetween}>
-        <h3>Fried Masala Paneer</h3>
-        <h3 style={{ fontWeight: 400 }}>$99.99</h3>
+        <h3>{productDetails?.name}</h3>
+        <h3 style={{ fontWeight: 400 }}>${productDetails?.price}</h3>
       </div>
-      <div
+      {/* <div
         style={{
           display: "flex",
           gap: "1rem",
@@ -53,7 +76,7 @@ const ItemDetail = () => {
           <hr style={{ width: "100%", margin: "auto" }} />
           <h2>50%</h2>
         </CaloriesCard>
-      </div>
+      </div> */}
       <hr style={{ width: "100%", boxSizing: "border-box" }} />
       <p
         style={{
@@ -67,20 +90,16 @@ const ItemDetail = () => {
         the best healthy food with the affordable range available for you in
         this city.
       </p>
-
-        <ButtonContainer>
-          <OutlinedButton 
-            style={{
-              gridColumn: 'span 3',
-              padding: 0
-            }}>
-            <AiOutlineHeart />
-          </OutlinedButton>
-          <ContainedButton style={{gridColumn: 'span 9'}}>
-            <AiOutlineShoppingCart />
-            <span style={{marginLeft: '1rem'}}>Add to Cart</span>
-          </ContainedButton>
-        </ButtonContainer>
+      <ButtonContainer>
+        
+        <ContainedButton
+          style={{ width: "100%" }}
+          onClick={() => addToCart()}
+        >
+          <AiOutlineShoppingCart />
+          <span style={{ marginLeft: "1rem" }}>Add to Cart</span>
+        </ContainedButton>
+      </ButtonContainer>
     </MainDiv>
   );
 };
