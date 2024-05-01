@@ -25,7 +25,7 @@ const HomeSlider = () => {
             
             <div onClick={()=> navigate(`/item-detail/${item?.id}`)}>
           <SlideCard
-            imageSrc="https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            imageSrc={item?.image || "https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
             name={item?.name}
             price={item?.price} // Assuming price is passed as a string
           />

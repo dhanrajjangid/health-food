@@ -6,10 +6,10 @@ import HomeSlider from "./Components/HomeSlider";
 
 const Home = () => {
   const navigate = useNavigate();
-  const tabs = ["Featured", "Popular", "Combos"];
+  const tabs = ["Featured", "Popular", "New Arrival"];
   return (
     <HomeContainer>
-      <h2 style={{marginBottom: '2rem'}}>Healthy Food</h2>
+      <h2 style={{marginBottom: '2rem'}}>Rental Dresses</h2>
       <div style={{marginBottom: '2rem'}}>
       <TabComponent tabs={tabs}/>
       </div>

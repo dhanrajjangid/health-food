@@ -43,7 +43,7 @@ const ItemDetail = () => {
     <MainDiv>
       <LeftArrow onClick={() => navigate("/home")} />{" "}
       <DetailImage
-        src="https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        src={productDetails?.image || "https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
         alt="ABC"
       />
       <div style={flexSpaceBetween}>
