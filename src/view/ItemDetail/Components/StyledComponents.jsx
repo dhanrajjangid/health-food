@@ -71,6 +71,7 @@ export const Price = styled.h3`
 `;
 
 export const Description = styled.p`
+  margin-left: 0;
   color: #88909f;
   font-size: 1rem;
 `;

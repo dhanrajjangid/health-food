@@ -18,27 +18,26 @@ import {
 } from "./Components/StyledComponents";
 import { ContainedButton } from "../../components/Common/FormInputs";
 import { actions } from "@/redux/slices/listingSlice";
+import { useItemDetail } from "./apiFunctions";
 
 const ItemDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const getProductById = useItemDetail();
   const { id } = useParams();
-  const [productDetails, setProductDetails] = useState({
-    id: 1,
-    image:
-      "https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    name: "Sample Product",
-    category: "Food",
-    description:
-      "This is a delicious and healthy food item, perfect for any meal. It's made with high-quality ingredients to ensure the best taste and nutritional value.",
-    price: 10.99,
-    dimensions: "10x10x5 cm",
-    length: "10 cm",
-    manufacturer: "Healthy Foods Co.",
-    color: "Natural",
-    material: "Organic ingredients",
-  });
+  const [productDetails, setProductDetails] = useState({});
 
+  const getProduct = async (id) => {
+    try {
+      const response = await getProductById(id);
+      setProductDetails(response?.product);
+    } catch {
+      console.error("error fetching product details");
+    }
+  };
+  useEffect(() => {
+    getProduct(id);
+  }, [id]);
   const addToCart = () => {
     dispatch(actions.setCartState(productDetails));
     toast.success("Item Added to cart");
@@ -50,7 +49,7 @@ const ItemDetail = () => {
       <ProductContainer>
         <DetailImage
           src={
-            productDetails?.image ||
+            productDetails?.imageUrl ||
             "https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           }
           alt={productDetails?.name}
@@ -61,6 +60,9 @@ const ItemDetail = () => {
           <Description>
             {productDetails?.description ||
               "This is the details part of this food and we are committed to providing you with the best healthy food at an affordable range available in this city."}
+          </Description>
+          <Description>
+            In Stock: {productDetails?.stockQuantity}
           </Description>
           <Price>₹{productDetails?.price}</Price>
           <ButtonContainer>
@@ -73,9 +75,9 @@ const ItemDetail = () => {
       </ProductContainer>
       <AdditionalDetails>
         <DetailItem>
-          <strong>Dimensions:</strong> {productDetails?.dimensions}
+          <strong>Dimensions:</strong> {productDetails?.dimensions?.length}
         </DetailItem>
-        
+
         <DetailItem>
           <strong>Color:</strong> {productDetails?.color}
         </DetailItem>
