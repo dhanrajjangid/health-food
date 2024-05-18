@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <h2 style={{marginBottom: '2rem'}}>Rental Dresses</h2>
+      <h2 style={{marginBottom: '2rem'}}>Crafted with Care</h2>
       <div style={{marginBottom: '2rem'}}>
       <TabComponent tabs={tabs}/>
       </div>

@@ -7,10 +7,12 @@ import {
   ProductInfo,
   ProductName,
   ProductPrice,
-  TotalPriceContainer,
+  Calculations,
   TotalPrice,
   DeleteButton,
-  Quantity
+  Quantity,
+  ProductContent,
+  ProductAction,
 } from "./Components/StyledComponents";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/slices/listingSlice";
@@ -20,7 +22,7 @@ import { ContainedButton } from "../../components/Common/FormInputs";
 const CartPage = () => {
   const dispatch = useDispatch();
   const createOrder = useCart();
-  const player_id = JSON.parse(localStorage.getItem('user'))?.player_id;
+  const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
 
   const cartList = useSelector((state) => state.listing.cartList);
   console.log(cartList, "Deleted item with id:");
@@ -36,26 +38,53 @@ const CartPage = () => {
 
   return (
     <CartPageContainer>
-      <CartHeader>Shopping Cart</CartHeader>
+      <CartHeader>Cart</CartHeader>
       {cartList?.map((item, index) => (
         <CartItem key={index}>
-          <ProductImage src={item.image || "https://via.placeholder.com/100"} alt={item.name} />
           <ProductInfo>
-            <div>
-              <ProductName>{item.name}</ProductName>
-              <DeleteButton onClick={() => handleDelete(item.id)}>Remove</DeleteButton>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <ProductImage
+                src={item?.imageUrl || "https://via.placeholder.com/100"}
+                alt={item.name}
+              />
+              <ProductContent>
+                <ProductName>{item?.name}</ProductName>
+                <Quantity>Color: {item?.color}</Quantity>
+                <Quantity>Quantity: {item?.quantity || 1}</Quantity>
+              </ProductContent>
             </div>
-            <div>
-              <Quantity>Qty: {item.quantity}</Quantity>
-              <ProductPrice>${item.price.toFixed(2)}</ProductPrice>
-            </div>
+            <ProductAction>
+              <DeleteButton onClick={() => handleDelete(item.id)}>
+                x
+              </DeleteButton>
+              <ProductPrice>${item?.price?.toFixed(2)}</ProductPrice>
+            </ProductAction>
           </ProductInfo>
         </CartItem>
       ))}
-      <TotalPriceContainer>
-        <TotalPrice>Total: ${totalPrice.toFixed(2)}</TotalPrice>
-        <ContainedButton onClick={() => createOrder(player_id, cartList)}>Confirm Order</ContainedButton>
-      </TotalPriceContainer>
+      <Calculations>
+        <TotalPrice>
+          Subtotal: <span>${totalPrice?.toFixed(2)}</span>
+        </TotalPrice>
+        <TotalPrice>
+          Discount: <span>${totalPrice?.toFixed(2)}</span>
+        </TotalPrice>
+        <TotalPrice>
+          Tax: <span>${totalPrice?.toFixed(2)}</span>
+        </TotalPrice>
+        <TotalPrice>
+          Total: <span>${totalPrice?.toFixed(2)}</span>
+        </TotalPrice>
+      </Calculations>
+      <ContainedButton
+        backgroundColor="#3B3C36"
+        borderColor='#3B3C36'
+        hoverColor= '#3B3C36'
+        // borderRadius='0'
+        onClick={() => createOrder(player_id, cartList)}
+      >
+        Confirm Order
+      </ContainedButton>
     </CartPageContainer>
   );
 };

@@ -66,17 +66,17 @@ export const ContainedButton = styled.button`
   box-sizing: border-box;
   padding: 15px 20px;
   width: 100%;
-  border-radius: 15px;
-  background-color: #14c2bf;
-  color: #fff;
+  border-radius: ${props => props?.borderRadius || '15px'};
+  background-color: ${props => props?.backgroundColor || '#14c2bf'};
+  color: ${props => props?.color || '#fff'};
   cursor: pointer;
   font-size: 1.2rem;
   transition: background-color 0.3s ease;
-  border: 1px solid #14c2bf;
+  border: 1px solid ${props => props?.borderColor || '#14c2bf'};
 
   &:hover {
-    background-color: #fff;
-    color: #14c2bf;
+    background-color: ${props => props?.hoverBackgroundColor || '#fff'};
+    color: ${props => props.hoverColor || '#14c2bf'};
   }
 `;
 

@@ -18,7 +18,7 @@ const Image = styled.img`
   height: 150px;
   mix-blend-mode: multiply;
   border-radius: 15px;
-
+  object-fit: cover;
 `;
 
 const Name = styled.h5`
