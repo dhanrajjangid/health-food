@@ -5,6 +5,7 @@ export const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 `;
 
 export const LeftArrow = styled(AiOutlineLeft)`
@@ -12,41 +13,95 @@ export const LeftArrow = styled(AiOutlineLeft)`
   font-size: 30px;
   cursor: pointer;
   align-self: start;
-  margin-bottom: 5px;
+  margin: 1rem;
+`;
+
+export const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 `;
 
 export const DetailImage = styled.img`
-  height: 250px;
-  width: 100%;
+  height: 300px;
+  width: 300px;
   object-fit: cover;
-  margin-bottom: 2rem;
-  margin-top: 3rem;
   border-radius: 15px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    height: 250px;
+    width: 250px;
+  }
+
+  @media (max-width: 480px) {
+    height: 200px;
+    width: 100%;
+  }
 `;
 
-export const CaloriesCard = styled.div`
-  box-sizing: border-box;
-  width: 100px;
-  border: 0.5px solid #88909f;
-  padding: 10px 15px;
-  box-sizing: border-box;
-  border-radius: 15px;
+export const ProductDetails = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex: 1;
+
+  @media (max-width: 480px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
-export const flexSpaceBetween = {
-    boxSizing: 'border-box',
-    display: "flex",
-    width: "100%",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "2rem",
-  };
+export const Title = styled.h3`
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+`;
 
-  export const ButtonContainer = styled.div`
+export const Price = styled.h3`
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #333;
+`;
+
+export const Description = styled.p`
+  color: #88909f;
+  font-size: 1rem;
+`;
+
+export const ButtonContainer = styled.div`
   margin-top: 20px;
   width: 100%;
+  display: flex;
+  justify-content: flex-start;
   gap: 1rem;
+
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
+`;
+
+export const AdditionalDetails = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+`;
+
+export const DetailItem = styled.p`
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #555;
 `;
