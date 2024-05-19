@@ -3,20 +3,21 @@ import { Outlet, Navigate } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
 import MobileMenuButton from "@/components/MenuButton";
 import Home from "@/view/Home";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actions } from "@/redux/slices/sidebarSlice";
-import { actions as authActions} from '@/redux/slices/authSlice'
+import { actions as authActions } from "@/redux/slices/authSlice";
 import Profile from "@/view/Profile";
-import ItemDetail from "@/view/ItemDetail"
+import ItemDetail from "@/view/ItemDetail";
 import CartButton from "../components/CartButton";
 import Cart from "../view/Cart";
 import OrderConfirm from "../view/Cart/Components/OrderConfirm";
 import PreviousOrders from "../view/PreviousOrders";
-
+import Loader from "@/components/Common/Loader";
 
 const PrivateLayout = ({ children }) => {
   const dispatch = useDispatch();
-  const storedUser = localStorage.getItem('user');
+  const storedUser = localStorage.getItem("user");
+  const loading = useSelector((state) => state.loading.isLoading);
 
   useEffect(() => {
     // Check localStorage for user data and dispatch login action if user is found
@@ -46,6 +47,8 @@ const PrivateLayout = ({ children }) => {
           }}
           onClick={() => dispatch(actions.toggleSidebar(false))}
         >
+          <Loader open={loading} />
+
           <Outlet />
         </div>
       </div>

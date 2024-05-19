@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
 import {
   MainDiv,
   LeftArrow,
@@ -17,14 +15,14 @@ import {
   DetailItem,
 } from "./Components/StyledComponents";
 import { ContainedButton } from "../../components/Common/FormInputs";
-import { actions } from "@/redux/slices/listingSlice";
 import { useItemDetail } from "./apiFunctions";
 
 const ItemDetail = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const getProductById = useItemDetail();
+  const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { getProductById, addToCart } = useItemDetail();
+
   const [productDetails, setProductDetails] = useState({});
 
   const getProduct = async (id) => {
@@ -35,13 +33,10 @@ const ItemDetail = () => {
       console.error("error fetching product details");
     }
   };
+
   useEffect(() => {
     getProduct(id);
   }, [id]);
-  const addToCart = () => {
-    dispatch(actions.setCartState(productDetails));
-    toast.success("Item Added to cart");
-  };
 
   return (
     <MainDiv>
@@ -61,12 +56,18 @@ const ItemDetail = () => {
             {productDetails?.description ||
               "This is the details part of this food and we are committed to providing you with the best healthy food at an affordable range available in this city."}
           </Description>
-          <Description>
-            In Stock: {productDetails?.stockQuantity}
-          </Description>
+          <Description>In Stock: {productDetails?.stockQuantity}</Description>
           <Price>₹{productDetails?.price}</Price>
           <ButtonContainer>
-            <ContainedButton onClick={addToCart}>
+            <ContainedButton
+              onClick={() =>
+                addToCart({
+                  playerId: player_id,
+                  productId: id,
+                  quantity: 1,
+                })
+              }
+            >
               <AiOutlineShoppingCart />
               <span style={{ marginLeft: "1rem" }}>Add to Cart</span>
             </ContainedButton>
