@@ -52,6 +52,7 @@ const PrivateLayout = ({ children }) => {
           <Outlet />
         </div>
       </div>
+      <CartButton />
     </div>
   ) : (
     <Navigate to="/login" />
