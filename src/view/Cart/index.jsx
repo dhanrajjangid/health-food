@@ -1,27 +1,18 @@
 import React, { useEffect, useState } from "react";
-import {
-  CartPageContainer,
-  CartHeader,
-  CartItem,
-  ProductImage,
-  ProductInfo,
-  ProductName,
-  ProductPrice,
-  Calculations,
-  TotalPrice,
-  DeleteButton,
-  Quantity,
-  ProductContent,
-  ProductAction,
-} from "./Components/StyledComponents";
+import { CartPageContainer, CartHeader } from "./Components/StyledComponents";
 import { useCart } from "./apiFunctions";
 import { ContainedButton } from "../../components/Common/FormInputs";
+import CartItem from "./Components/CartItem";
+import CartCalculations from "./Components/CartCalculations";
+import ShippingForm from "./Components/ShippingForm";
+import SuccessPopup from "../../components/Popups/SuccessPopup";
 
 const CartPage = () => {
   const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
   const { createOrder, getCartItems, removeItem } = useCart();
 
   const [cartItems, setCartItems] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const getCart = () => {
     getCartItems({ player_id, setCartItems });
@@ -43,56 +34,31 @@ const CartPage = () => {
     getCart();
   };
 
+  const handlePopupClose = () => {
+    setShowPopup(false);
+  };
+
   return (
     <CartPageContainer>
+      {showPopup && (
+        <SuccessPopup
+          message="This is test environment, Order can not be placed."
+          onClose={handlePopupClose}
+        />
+      )}
       <CartHeader>Cart</CartHeader>
       {cartItems?.map((item, index) => (
-        <CartItem key={index}>
-          <ProductInfo>
-            <div style={{ display: "flex", gap: "10px" }}>
-              <ProductImage
-                src={
-                  item?.productId?.imageUrl || "https://via.placeholder.com/100"
-                }
-                alt={item?.productId?.name}
-              />
-              <ProductContent>
-                <ProductName>{item?.productId?.name}</ProductName>
-                <Quantity>Color: {item?.productId?.color}</Quantity>
-                <Quantity>Quantity: {item?.quantity || 1}</Quantity>
-              </ProductContent>
-            </div>
-            <ProductAction>
-              <DeleteButton onClick={() => handleDelete(item?.productId)}>
-                x
-              </DeleteButton>
-              <ProductPrice>
-                ${(item?.productId?.price * item?.quantity)?.toFixed(2)}
-              </ProductPrice>
-            </ProductAction>
-          </ProductInfo>
-        </CartItem>
+        <CartItem key={index} item={item} handleDelete={handleDelete} />
       ))}
-      <Calculations>
-        <TotalPrice>
-          Subtotal: <span>${totalPrice?.toFixed(2)}</span>
-        </TotalPrice>
-        <TotalPrice>
-          Discount: <span>${totalPrice?.toFixed(2)}</span>
-        </TotalPrice>
-        <TotalPrice>
-          Tax: <span>${totalPrice?.toFixed(2)}</span>
-        </TotalPrice>
-        <TotalPrice>
-          Total: <span>${totalPrice?.toFixed(2)}</span>
-        </TotalPrice>
-      </Calculations>
+      <CartCalculations totalPrice={totalPrice} />
+      <ShippingForm />
       <ContainedButton
         backgroundColor="#3B3C36"
         borderColor="#3B3C36"
         hoverColor="#3B3C36"
         // borderRadius='0'
-        onClick={() => createOrder(player_id, cartList)}
+        // onClick={() => createOrder(player_id, cartList)}
+        onClick={() => setShowPopup(true)}
       >
         Confirm Order
       </ContainedButton>

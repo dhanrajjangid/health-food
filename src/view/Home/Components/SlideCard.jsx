@@ -49,7 +49,7 @@ const SlideCard = ({ imageSrc, name, price }) => {
       >
         <div>
           <Name>{name}</Name>
-          <Price>${price}</Price>
+          <Price>₹{price}</Price>
         </div>
         <CartIcon onClick={() => alert("Added to cart")} /> {/* Cart icon */}
       </div>
