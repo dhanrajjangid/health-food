@@ -1,29 +1,41 @@
-// RegistrationForm.js
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useRegister } from "./apiFunctions"; // Assuming you have an api function for registration
+import { useRegister } from "./apiFunctions";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import {
   Container,
   Title,
-  StyledForm,
-  StyledTextField,
   SignUpLink,
-} from "@/view/Login/StyledComponents";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import {ContainedButton} from '@/components/Common/FormInputs'
+  CheckboxContainer,
+  CheckboxLabel,
+  Form,
+  FieldContainer,
+  ErrorMessage,
+} from "./Components/StyledComponents";
+
+import {
+  ContainedButton,
+  Checkbox,
+  TextField,
+} from "@/components/Common/FormInputs";
+
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
+  acceptTerms: Yup.boolean()
+    .oneOf([true], "Please accept the terms and conditions and privacy policy")
+    .required("Please accept the terms and conditions and privacy policy"),
 });
 
 const SignUp = () => {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.loggedIn);
-  const register = useRegister(); // Assuming you have a custom hook for registration
+  const registerUser = useRegister(); // Assuming you have a custom hook for registration
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -32,47 +44,103 @@ const SignUp = () => {
   }, [isAuthenticated, navigate]);
 
   const {
-    register: formRegister,
     handleSubmit,
     formState: { isSubmitting, errors },
+    control,
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
+  console.log(errors, "errors are consoled here");
+
   const onSubmit = async (data) => {
     try {
-      await register(data);
+      await registerUser(data);
     } catch (error) {
       console.error("Registration failed:", error);
     }
   };
 
+  const fields = [
+    {
+      name: "name",
+      type: "text",
+      placeholder: "Name",
+      validation: validationSchema.fields.name,
+    },
+    {
+      name: "email",
+      type: "email",
+      placeholder: "Email",
+      validation: validationSchema.fields.email,
+    },
+    {
+      name: "password",
+      type: "password",
+      placeholder: "Password",
+      validation: validationSchema.fields.password,
+    },
+    {
+      name: "acceptTerms",
+      type: "checkbox",
+      label: (
+        <>
+          I accept the{" "}
+          <a href="/terms-and-conditions" target="_blank">
+            terms and conditions
+          </a>{" "}
+          and{" "}
+          <a href="/privacy-policy" target="_blank">
+            privacy policy
+          </a>
+        </>
+      ),
+      validation: validationSchema.fields.acceptTerms,
+    },
+  ];
+
   return (
     <Container>
       <Title>Sign Up</Title>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledTextField
-          {...formRegister("name")}
-          placeholder="Name"
-          type="text"
-        />
-        {errors.name && <span>{errors.name.message}</span>}
-        <StyledTextField
-          {...formRegister("email")}
-          placeholder="Email"
-          type="email"
-        />
-        {errors.email && <span>{errors.email.message}</span>}
-        <StyledTextField
-          {...formRegister("password")}
-          placeholder="Password"
-          type="password"
-        />
-        {errors.password && <span>{errors.password.message}</span>}
-        <ContainedButton type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Signing up..." : "Sign Up"}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        {fields.map((item, index) => (
+          <FieldContainer key={index}>
+            {item.type === "checkbox" ? (
+              <CheckboxContainer>
+                <Controller
+                  name={item.name}
+                  control={control}
+                  defaultValue={false}
+                  render={({ field }) => <Checkbox {...field} />}
+                />
+                <CheckboxLabel htmlFor={item.name}>{item.label}</CheckboxLabel>
+              </CheckboxContainer>
+            ) : (
+              <Controller
+                name={item.name}
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <>
+                    <TextField
+                      {...field}
+                      type={item.type}
+                      padding="15px 10px"
+                      placeholder={item.placeholder}
+                    />
+                  </>
+                )}
+              />
+            )}
+            {errors[item.name] && (
+              <ErrorMessage>{errors[item.name].message}</ErrorMessage>
+            )}
+          </FieldContainer>
+        ))}
+        <ContainedButton type="submit">
+          {isSubmitting ? "Loading..." : "Submit"}
         </ContainedButton>
-      </StyledForm>
+      </Form>
       <p>
         Already have an account?{" "}
         <SignUpLink onClick={() => navigate("/login")}>Log In</SignUpLink> here

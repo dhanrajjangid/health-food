@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 // TextField component
 export const TextField = styled.input`
-  padding: 10px;
+  padding: ${(props) => props?.padding || "10px"};
+  border-radius: ${(props) => props?.borderRadius || "0"};
   border: 1px solid #ccc;
-  border-radius: 5px;
   max-width: 100%;
   font-size: 1rem;
 `;
@@ -35,19 +35,19 @@ export const Dropdown = styled.select`
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
-  appearance: none; /* Remove default arrow icon */
-  background-color: #fff; /* Set background color */
-  font-size: 16px; /* Adjust font size */
-  cursor: pointer; /* Show pointer cursor */
-  outline: none; /* Remove default focus outline */
-  -webkit-appearance: none; /* For older versions of iOS */
-  -moz-appearance: none; /* For older versions of Firefox */
+  appearance: none; 
+  background-color: #fff; 
+  font-size: 16px; 
+  cursor: pointer;
+  outline: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none; 
 
   /* Add custom arrow icon */
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
   background-repeat: no-repeat;
-  background-position: right 10px center; /* Adjust position of arrow icon */
-  background-size: 16px 16px; /* Adjust size of arrow icon */
+  background-position: right 10px center;
+  background-size: 16px 16px;
 `;
 
 export const DropdownContainer = styled.div`
@@ -66,17 +66,17 @@ export const ContainedButton = styled.button`
   box-sizing: border-box;
   padding: 15px 20px;
   width: 100%;
-  border-radius: ${props => props?.borderRadius || '15px'};
-  background-color: ${props => props?.backgroundColor || '#14c2bf'};
-  color: ${props => props?.color || '#fff'};
+  border-radius: ${(props) => props?.borderRadius || "0"};
+  background-color: ${(props) => props?.backgroundColor || "#14c2bf"};
+  color: ${(props) => props?.color || "#fff"};
   cursor: pointer;
   font-size: 1.2rem;
   transition: background-color 0.3s ease;
-  border: 1px solid ${props => props?.borderColor || '#14c2bf'};
+  border: 1px solid ${(props) => props?.borderColor || "#14c2bf"};
 
   &:hover {
-    background-color: ${props => props?.hoverBackgroundColor || '#fff'};
-    color: ${props => props.hoverColor || '#14c2bf'};
+    background-color: ${(props) => props?.hoverBackgroundColor || "#fff"};
+    color: ${(props) => props.hoverColor || "#14c2bf"};
   }
 `;
 
@@ -87,7 +87,7 @@ export const OutlinedButton = styled.button`
   padding: 15px 20px;
   width: 100%;
   border: 2px solid #14c2bf;
-  border-radius: 15px;
+  // border-radius: 15px;
   background-color: transparent;
   cursor: pointer;
   color: #14c2bf;
@@ -96,6 +96,35 @@ export const OutlinedButton = styled.button`
 
   &:hover {
     background-color: #14c2bf;
+    color: #fff;
+  }
+`;
+
+export const Checkbox = styled.input.attrs((props) => ({
+  type: "checkbox",
+  defaultChecked: props.defaultChecked ? true : undefined,
+  ref: props?.ref && props?.ref
+}))`
+  cursor: pointer;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:checked {
+    background-color: #14c2bf;
+    border-color: #14c2bf;
+  }
+
+  &:checked::before {
+    content: "✔";
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 18px;
     color: #fff;
   }
 `;

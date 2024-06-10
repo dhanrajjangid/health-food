@@ -36,7 +36,7 @@ export const SidebarItem = styled.div`
   cursor: pointer;
   color: ${({ active }) => (active ? "#fff" : "")};
   background-color: ${({ active }) => (active ? "#14C2BF" : "#fff")};
-  border-radius: 15px;
+  // border-radius: 15px;
   margin: 0.15em 1.5em;
   display: flex;
   align-items: center;

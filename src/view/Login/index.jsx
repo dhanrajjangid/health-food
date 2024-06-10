@@ -1,17 +1,24 @@
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogin } from "./apiFunctions";
-import { Container, Title, StyledForm, StyledTextField, SignUpLink } from "./StyledComponents";
-import * as Yup from 'yup'; // Import Yup
-import { yupResolver } from '@hookform/resolvers/yup';
-import {actions as authActions} from '@/redux/slices/authSlice'
-import { ContainedButton } from "../../components/Common/FormInputs";
+import * as Yup from "yup"; // Import Yup
+import { yupResolver } from "@hookform/resolvers/yup";
+import { actions as authActions } from "@/redux/slices/authSlice";
+import {
+  Container,
+  Title,
+  SignUpLink,
+  Form,
+  FieldContainer,
+  ErrorMessage,
+} from "@/view/SignUp/Components/StyledComponents";
+import { TextField, ContainedButton } from "../../components/Common/FormInputs";
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required('Username is required'),
-  password: Yup.string().required('Password is required')
+  username: Yup.string().required("Username is required"),
+  password: Yup.string().required("Password is required"),
 });
 
 const LoginForm = () => {
@@ -22,7 +29,7 @@ const LoginForm = () => {
   const login = useLogin();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem("user");
     if (storedUser) {
       dispatch(authActions.login(JSON.parse(storedUser)));
     }
@@ -35,11 +42,11 @@ const LoginForm = () => {
   }, [isAuthenticated, navigate]);
 
   const {
-    register,
+    control,
     handleSubmit,
     formState: { isSubmitting, errors },
   } = useForm({
-    resolver: yupResolver(validationSchema), // Use YupResolver with validationSchema
+    resolver: yupResolver(validationSchema), 
   });
 
   const onSubmit = async (data) => {
@@ -50,26 +57,51 @@ const LoginForm = () => {
     }
   };
 
+  const fields = [
+    {
+      name: "username",
+      type: "text",
+      placeholder: "Username",
+      validation: validationSchema.fields.email,
+    },
+    {
+      name: "password",
+      type: "password",
+      placeholder: "Password",
+      validation: validationSchema.fields.password,
+    },
+  ];
+
   return (
     <Container>
       <Title>Sign In</Title>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledTextField
-          {...register("username")}
-          placeholder="Username"
-          type="text"
-        />
-        {errors.username && <span>{errors.username.message}</span>}
-        <StyledTextField
-          {...register("password")}
-          placeholder="Password"
-          type="password"
-        />
-        {errors.password && <span>{errors.password.message}</span>}
-        <ContainedButton type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Logging in..." : "Login"}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        {fields.map((item, index) => (
+          <FieldContainer key={index}>
+            <Controller
+              name={item.name}
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <>
+                  <TextField
+                    {...field}
+                    type={item.type}
+                    padding="15px 10px"
+                    placeholder={item.placeholder}
+                  />
+                </>
+              )}
+            />
+            {errors[item.name] && (
+              <ErrorMessage>{errors[item.name].message}</ErrorMessage>
+            )}
+          </FieldContainer>
+        ))}
+        <ContainedButton type="submit">
+          {isSubmitting ? "Loading..." : "Log in"}
         </ContainedButton>
-      </StyledForm>
+      </Form>
       <p>
         Do not have an account?{" "}
         <SignUpLink onClick={() => navigate("/signup")}>Sign Up</SignUpLink>{" "}

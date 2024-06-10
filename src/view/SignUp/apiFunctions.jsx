@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const useRegister = () => {
   const navigate = useNavigate()
-  const register = async ({name, email, password}) => {
+  const registerUser = async ({name, email, password}) => {
     try {
       const response = await postApiData('/players/register', { name, email, password });
       navigate('/login');
@@ -15,5 +15,5 @@ export const useRegister = () => {
     }
   };
 
-  return register;
+  return registerUser;
 };

@@ -13,6 +13,11 @@ import Cart from "../view/Cart";
 import OrderConfirm from "../view/Cart/Components/OrderConfirm";
 import PreviousOrders from "../view/PreviousOrders";
 import Loader from "@/components/Common/Loader";
+import Footer from "@/components/Footer";
+import Terms from "@/view/Terms";
+import Privacy from "@/view/Privacy";
+import RefundPolicy from "@/view/RefundPolicy";
+import ContactUs from "@/view/ContactUs";
 
 const PrivateLayout = ({ children }) => {
   const dispatch = useDispatch();
@@ -50,6 +55,7 @@ const PrivateLayout = ({ children }) => {
           <Loader open={loading} />
 
           <Outlet />
+          <Footer />
         </div>
       </div>
       <CartButton />
@@ -91,6 +97,22 @@ const privateRoutes = [
       {
         path: "/item-detail/:id",
         element: <ItemDetail />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <Privacy />,
+      },
+      {
+        path: "/terms-and-conditions",
+        element: <Terms />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
+      },
+      {
+        path: "/refund-policy",
+        element: <RefundPolicy />,
       },
     ],
   },
