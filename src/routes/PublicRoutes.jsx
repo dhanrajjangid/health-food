@@ -10,6 +10,7 @@ import Terms from "@/view/Terms";
 import Privacy from "@/view/Privacy";
 import RefundPolicy from "@/view/RefundPolicy";
 import ContactUs from "@/view/ContactUs";
+import ShippingPolicy from "@/view/ShippingPolicy";
 
 const PublicLayout = ({ children }) => (
   <div>
@@ -51,6 +52,10 @@ const publicRoutes = [
       {
         path: "/refund-policy",
         element: <RefundPolicy />,
+      },
+      {
+        path: "/shipping-policy",
+        element: <ShippingPolicy />,
       },
     ],
   },

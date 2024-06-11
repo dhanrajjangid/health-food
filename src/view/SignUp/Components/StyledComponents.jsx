@@ -15,10 +15,17 @@ export const Title = styled.h2`
 `;
 
 export const Form = styled.form`
-  max-width: 100%;
   box-sizing: border-box;
-  width: 100%;
+  width: 25%;
   padding: 1rem;
+
+  @media (max-width: 1025px) {
+    width: 60%;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const FieldContainer = styled.div`

@@ -12,8 +12,8 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 25px 10px;
-  background: #f4f4f4;
+  padding: 25px 20px;
+  background: #fff;
   border: none;
   border-radius: 0;
 
@@ -21,7 +21,7 @@ const HeaderContainer = styled.header`
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    padding: 5px 10px;
+    padding: 5px 20px;
   }
 `;
 
@@ -37,11 +37,9 @@ const CompanyContainer = styled.div`
 
 const CompanyName = styled.div`
   font-size: 1.5rem;
-  padding: 2px 10px;
+  font-weight: bold;
   margin-right: 20px;
-  background-color: #fff;
-  color: #14c2bf;
-  // border-radius: 15px;
+  color: #4a4a4a;
 `;
 
 const MenuButton = styled.button`
