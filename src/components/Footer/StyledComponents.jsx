@@ -21,16 +21,18 @@ export const LinksContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin: 0.5rem 0;
+  max-width: 100%;
 
   @media (max-width: 600px) {
     flex-direction: column;
     align-items: center;
+    justify-content: start;
   }
 `;
 
 export const FooterLink = styled.a`
   color: white;
-  margin: 0 1rem;
+  margin: 0.5rem 1rem;
   text-decoration: none;
   font-size: 1rem;
   

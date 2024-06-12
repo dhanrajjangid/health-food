@@ -14,9 +14,9 @@ import OrderConfirm from "../view/Cart/Components/OrderConfirm";
 import PreviousOrders from "../view/PreviousOrders";
 import Loader from "@/components/Common/Loader";
 import Footer from "@/components/Footer";
-import Terms from "@/view/Terms";
-import Privacy from "@/view/Privacy";
-import RefundPolicy from "@/view/RefundPolicy";
+import Terms from "@/view//Policies/TermsAndConditions";
+import Privacy from "@/view/Policies/PrivacyPolicy";
+import RefundPolicy from "@/view/Policies/RefundPolicy";
 import ContactUs from "@/view/ContactUs";
 
 const PrivateLayout = ({ children }) => {

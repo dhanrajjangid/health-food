@@ -6,11 +6,12 @@ import { Navigate } from "react-router-dom";
 import Footer from "@/components/Footer"
 import Login from "@/view/Login";
 import SignUp from "@/view/SignUp";
-import Terms from "@/view/Terms";
-import Privacy from "@/view/Privacy";
-import RefundPolicy from "@/view/RefundPolicy";
+import Terms from "@/view/Policies/TermsAndConditions";
+import Privacy from "@/view/Policies/PrivacyPolicy";
+import RefundPolicy from "@/view/Policies/RefundPolicy";
 import ContactUs from "@/view/ContactUs";
-import ShippingPolicy from "@/view/ShippingPolicy";
+import ShippingPolicy from "@/view/Policies/ShippingPolicy";
+import CancellationPolicy from "@/view/Policies/CancellationPolicy";
 
 const PublicLayout = ({ children }) => (
   <div>
@@ -56,6 +57,10 @@ const publicRoutes = [
       {
         path: "/shipping-policy",
         element: <ShippingPolicy />,
+      },
+      {
+        path: "/cancellation-policy",
+        element: <CancellationPolicy />,
       },
     ],
   },

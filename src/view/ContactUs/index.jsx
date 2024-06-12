@@ -31,16 +31,21 @@ const ContactUs = () => {
         .
       </Paragraph>
 
-      <Paragraph>Alternatively, you can fill out the form below:</Paragraph>
+      {/* <Paragraph>Alternatively, you can fill out the form below:</Paragraph>
 
-      <ContactForm>
+      <ContactForm onSubmit={()=> alert('Form Submitted')}> 
         <Input type="text" placeholder="Your Name" />
         <Input type="email" placeholder="Your Email" />
         <TextArea rows="5" placeholder="Your Message"></TextArea>
         <SubmitButton type="submit">Send Message</SubmitButton>
-      </ContactForm>
+      </ContactForm> */}
 
       <Paragraph>We'll get back to you as soon as possible!</Paragraph>
+
+      <Subtitle>Operational Address:</Subtitle>
+      <Paragraph>
+        35 Suman Nagar, Indore, M.P, India, Pin: 452010.
+      </Paragraph>
 
       <Image src="https://images.pexels.com/photos/821754/pexels-photo-821754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Contact Us" />
     </Container>
