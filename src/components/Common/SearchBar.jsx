@@ -58,7 +58,7 @@ const AnimatedTextField = styled.div`
           animation: ${slideOut} 0.4s forwards;
         `}
 
-  @media (max-width: 480) {
+  @media (max-width: 480px) {
     width: -webkit-fill-available;
   }
 `;
