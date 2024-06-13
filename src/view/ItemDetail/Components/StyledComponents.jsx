@@ -14,6 +14,7 @@ export const LeftArrow = styled(AiOutlineLeft)`
   cursor: pointer;
   align-self: start;
   margin: 1rem;
+  z-index: 20;
 `;
 
 export const ProductContainer = styled.div`
