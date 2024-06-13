@@ -52,8 +52,18 @@ export const ProductDetails = styled.div`
   flex: 1;
 
   @media (max-width: 480px) {
-    align-items: center;
-    text-align: center;
+    align-items: self-start;
+    text-align: left;
+  }
+`;
+
+export const Category = styled.h4`
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+
+  @media (max-width: 480px) {
+    text-align: left;
   }
 `;
 
@@ -61,6 +71,10 @@ export const Title = styled.h3`
   margin: 0;
   font-size: 1.5rem;
   font-weight: 500;
+
+  @media (max-width: 480px) {
+    text-align: left;
+  }
 `;
 
 export const Price = styled.h3`
@@ -103,6 +117,21 @@ export const AdditionalDetails = styled.div`
 
 export const DetailItem = styled.p`
   margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #555;
+`;
+
+export const RatingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const Stars = styled.div`
+  display: flex;
+`;
+
+export const RatingCount = styled.span`
   font-size: 1rem;
   color: #555;
 `;

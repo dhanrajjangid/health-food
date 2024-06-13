@@ -8,7 +8,7 @@ const l49 = keyframes`
 `;
 
 const LoaderWrapper = styled.div`
-  height: 15px;
+  height: 10px;
   aspect-ratio: 4;
   --_g: no-repeat radial-gradient(farthest-side, #000 90%, #0000);
   background:
