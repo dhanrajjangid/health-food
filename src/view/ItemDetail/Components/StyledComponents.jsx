@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { AiOutlineLeft } from "react-icons/ai";
+import styled, { keyframes, css } from "styled-components";
+import { AiOutlineClose, AiOutlineLeft, AiOutlineSearch } from "react-icons/ai";
 
 export const MainDiv = styled.div`
   display: flex;
@@ -9,12 +9,70 @@ export const MainDiv = styled.div`
 `;
 
 export const LeftArrow = styled(AiOutlineLeft)`
-  position: fixed;
   font-size: 30px;
   cursor: pointer;
   align-self: start;
-  margin: 1rem;
-  z-index: 20;
+`;
+
+export const SearchIcon = styled(AiOutlineSearch)`
+  font-size: 30px;
+  cursor: pointer;
+  align-self: start;
+`;
+export const CloseIcon = styled(AiOutlineClose)`
+  font-size: 30px;
+  cursor: pointer;
+  align-self: start;
+`;
+
+const slideIn = keyframes`
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const slideOut = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+`;
+
+export const AnimatedTextField = styled.div`
+  position: absolute;
+  right: 50px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  ${({ isVisible }) =>
+    isVisible
+      ? css`
+          animation: ${slideIn} 0.4s forwards;
+        `
+      : css`
+          animation: ${slideOut} 0.4s forwards;
+        `}
+`;
+
+export const TopBar = styled.div`
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 1.5rem;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 `;
 
 export const ProductContainer = styled.div`

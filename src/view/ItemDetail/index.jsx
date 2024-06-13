@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { MainDiv, LeftArrow } from "./Components/StyledComponents";
+import {
+  MainDiv,
+  LeftArrow,
+  TopBar,
+  SearchIcon,
+  CloseIcon,
+  AnimatedTextField,
+} from "./Components/StyledComponents";
 import { useItemDetail } from "./apiFunctions";
 import { AdditionalDetailsBox } from "./Components/AdditionalDetailsBox";
 import { ProductContainerBox } from "./Components/ProductContainerBox";
+import { TextField } from "@/components/Common/FormInputs";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -11,6 +19,7 @@ const ItemDetail = () => {
   const { getProductById } = useItemDetail();
 
   const [productDetails, setProductDetails] = useState({});
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const getProduct = async (id) => {
     try {
@@ -27,7 +36,19 @@ const ItemDetail = () => {
 
   return (
     <MainDiv>
-      <LeftArrow onClick={() => navigate("/home")} />
+      <TopBar>
+        <LeftArrow onClick={() => navigate("/home")} />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <AnimatedTextField isVisible={isSearchOpen}>
+            <TextField borderRadius="10px" />
+          </AnimatedTextField>
+          {isSearchOpen ? (
+            <CloseIcon onClick={() => setIsSearchOpen(false)} />
+          ) : (
+            <SearchIcon onClick={() => setIsSearchOpen(true)} />
+          )}
+        </div>
+      </TopBar>
       <ProductContainerBox productDetails={productDetails} />
       <AdditionalDetailsBox productDetails={productDetails} />
     </MainDiv>
