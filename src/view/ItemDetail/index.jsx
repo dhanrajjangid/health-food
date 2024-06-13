@@ -40,7 +40,7 @@ const ItemDetail = () => {
         <LeftArrow onClick={() => navigate("/home")} />
         <div style={{ display: "flex", alignItems: "center" }}>
           <AnimatedTextField isVisible={isSearchOpen}>
-            <TextField borderRadius="10px" />
+            {isSearchOpen && <TextField borderRadius="10px" />}
           </AnimatedTextField>
           {isSearchOpen ? (
             <CloseIcon onClick={() => setIsSearchOpen(false)} />
