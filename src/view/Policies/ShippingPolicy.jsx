@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Paragraph, SectionTitle, Title } from "./Components/StyledComponents";
+import { Container, EmailLink, Paragraph, SectionTitle, Title } from "./Components/StyledComponents";
 
 const ShippingPolicy = () => {
     return (
