@@ -9,7 +9,7 @@ import SuccessPopup from "../../components/Popups/SuccessPopup";
 
 const CartPage = () => {
   const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
-  const { createOrder, getCartItems, removeItem } = useCart();
+  const { handlePayment, getCartItems, removeItem } = useCart();
 
   const [cartItems, setCartItems] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -58,7 +58,7 @@ const CartPage = () => {
         hoverColor="#3B3C36"
         // borderRadius='0'
         // onClick={() => createOrder(player_id, cartList)}
-        onClick={() => setShowPopup(true)}
+        onClick={() => handlePayment(player_id)}
       >
         Confirm Order
       </ContainedButton>
