@@ -59,7 +59,7 @@ const AnimatedTextField = styled.div`
         `}
 
   @media (max-width: 480px) {
-    width: -webkit-fill-available;
+    width: 100%;
   }
 `;
 
