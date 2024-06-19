@@ -5,8 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Form,
   FieldContainer,
-  ErrorMessage
-} from '@/view/Profile/Components/StyledComponents'
+  ErrorMessage,
+} from "@/view/Profile/Components/StyledComponents";
 import {
   UnderlinedTextField,
   ContainedButton,
@@ -23,7 +23,7 @@ const validationSchema = Yup.object().shape({
   pincode: Yup.string().required("Pincode is required"),
 });
 
-const ShippingForm = () => {
+const ShippingForm = ({triggerSubmit}) => {
   const {
     control,
     setValue,
@@ -34,7 +34,7 @@ const ShippingForm = () => {
   });
 
   const onSubmit = (data) => {
-    updatePlayer(player_id, data)
+    triggerSubmit(data);
   };
 
   const fields = [
@@ -83,36 +83,41 @@ const ShippingForm = () => {
       placeholder: "Pincode",
       validation: validationSchema.fields.pincode,
     },
-    
   ];
-
 
   return (
     <>
-    <h4>Shipping Details:</h4>
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      {fields.map((item, index) => (
-        <FieldContainer key={index}>
-          <Controller
-            name={item.name}
-            control={control}
-            defaultValue=""
-            render={({ field }) => (
-              <>
-                <UnderlinedTextField
-                  {...field}
-                  placeholder={item.placeholder}
-                />
-                {errors[field.name] && (
-                  <ErrorMessage>{errors[field.name].message}</ErrorMessage>
-                )}
-              </>
-            )}
-          />
-        </FieldContainer>
-      ))}
-      {/* <ContainedButton type="submit">Submit</ContainedButton> */}
-    </Form>
+      <h4>Shipping Details:</h4>
+      <Form onSubmit={handleSubmit(onSubmit)} id="shippingForm">
+        {fields.map((item, index) => (
+          <FieldContainer key={index}>
+            <Controller
+              name={item.name}
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <>
+                  <UnderlinedTextField
+                    {...field}
+                    placeholder={item.placeholder}
+                  />
+                  {errors[field.name] && (
+                    <ErrorMessage>{errors[field.name].message}</ErrorMessage>
+                  )}
+                </>
+              )}
+            />
+          </FieldContainer>
+        ))}
+        {/* <ContainedButton
+          backgroundColor="#3B3C36"
+          borderColor="#3B3C36"
+          hoverColor="#3B3C36"
+          type="submit"
+        >
+          Proceed To Checkout
+        </ContainedButton> */}
+      </Form>
     </>
   );
 };

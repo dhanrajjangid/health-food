@@ -6,6 +6,7 @@ import CartItem from "./Components/CartItem";
 import CartCalculations from "./Components/CartCalculations";
 import ShippingForm from "./Components/ShippingForm";
 import SuccessPopup from "../../components/Popups/SuccessPopup";
+import PaymentBox from "./Components/PaymentBox";
 
 const CartPage = () => {
   const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
@@ -38,6 +39,17 @@ const CartPage = () => {
     setShowPopup(false);
   };
 
+  const triggerSubmit = (data) => {
+    handlePayment(player_id);
+  };
+
+  const handleConfirmOrder = () => {
+    const form = document.getElementById("shippingForm");
+    if (form) {
+      form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    }
+  };
+
   return (
     <CartPageContainer>
       {showPopup && (
@@ -51,14 +63,13 @@ const CartPage = () => {
         <CartItem key={index} item={item} handleDelete={handleDelete} />
       ))}
       <CartCalculations totalPrice={totalPrice} />
-      <ShippingForm />
+      <ShippingForm triggerSubmit={triggerSubmit} />
+      <PaymentBox />
       <ContainedButton
         backgroundColor="#3B3C36"
         borderColor="#3B3C36"
         hoverColor="#3B3C36"
-        // borderRadius='0'
-        // onClick={() => createOrder(player_id, cartList)}
-        onClick={() => handlePayment(player_id)}
+        onClick={handleConfirmOrder}
       >
         Confirm Order
       </ContainedButton>

@@ -72,7 +72,7 @@ export const useCart = () => {
           const verificationResponse = await postApiData('/payment/verify-payment', paymentData);
 
           if (verificationResponse.status === 'success') {
-            alert('Payment successful');
+            navigate('/order-success');
           } else {
             alert('Payment verification failed');
           }

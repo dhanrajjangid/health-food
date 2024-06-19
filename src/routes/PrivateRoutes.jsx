@@ -18,6 +18,7 @@ import Terms from "@/view//Policies/TermsAndConditions";
 import Privacy from "@/view/Policies/PrivacyPolicy";
 import RefundPolicy from "@/view/Policies/RefundPolicy";
 import ContactUs from "@/view/ContactUs";
+import OrderSuccess from "@/view/OrderSuccess";
 
 const PrivateLayout = ({ children }) => {
   const dispatch = useDispatch();
@@ -113,6 +114,10 @@ const privateRoutes = [
       {
         path: "/refund-policy",
         element: <RefundPolicy />,
+      },
+      {
+        path: "/order-success",
+        element: <OrderSuccess />,
       },
     ],
   },

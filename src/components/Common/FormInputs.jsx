@@ -64,7 +64,7 @@ export const Label = styled.label`
 // Button component (Contained)
 export const ContainedButton = styled.button`
   box-sizing: border-box;
-  padding: 15px 20px;
+  padding: ${(props) => props?.padding || '15px 20px'} ;
   width: 100%;
   border-radius: ${(props) => props?.borderRadius || "0"};
   background-color: ${(props) => props?.backgroundColor || "#14c2bf"};
@@ -84,7 +84,7 @@ export const ContainedButton = styled.button`
 export const OutlinedButton = styled.button`
   box-sizing: border-box;
 
-  padding: 15px 20px;
+  padding: ${(props) => props?.padding || '15px 20px'};
   width: 100%;
   border: 2px solid #14c2bf;
   // border-radius: 15px;
