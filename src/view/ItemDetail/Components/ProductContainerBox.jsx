@@ -62,7 +62,7 @@ export const ProductContainerBox = ({ productDetails }) => {
             onClick={() =>
               addToCart({
                 playerId: player_id,
-                productId: id,
+                productId: productDetails?._id,
                 quantity: 1,
               })
             }
