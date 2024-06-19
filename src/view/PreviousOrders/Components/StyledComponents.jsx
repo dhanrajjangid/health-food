@@ -41,7 +41,7 @@ export const ProductName = styled.span`
 `;
 
 export const ProductPrice = styled.span`
-  font-size: 1rem;
+  font-size: 0.7rem;
   font-weight: 600;
 `;
 
