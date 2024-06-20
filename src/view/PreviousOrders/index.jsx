@@ -22,7 +22,7 @@ const PreviousOrders = () => {
       {orderList?.map((order) => {
         return (
           <>
-            <OrderItem key={order?._id} order={order} />
+            <OrderItem key={order?._id} order={order} onClick={()=> Navigate(`/order-history/${order?._id}`)}/>
           </>
         );
       })}

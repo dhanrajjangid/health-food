@@ -30,15 +30,26 @@ const Title = styled.h2`
   box-sizing: border-box;
 `;
 
+const TopBox = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 500px;
+  width: 100%;
+`;
+
 const Box = styled.div`
- background: #1a1a1a;
+  background: #1a1a1a;
   color: #fff;
   display: flex;
   gap: 0.5rem;
   box-sizing: border-box;
   flex-direction: column;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 15px;
   margin-bottom: 10px;
   max-width: 500px;
   width: 100%;
@@ -96,7 +107,7 @@ const OrderDetails = () => {
         <FaArrowLeft />
       </BackButton>
       <Title>Order Details</Title>
-      <Box>
+      <TopBox>
         <DetailText>
           <Label>Order ID:</Label> <span>{orderId}</span>
         </DetailText>
@@ -109,7 +120,7 @@ const OrderDetails = () => {
         <DetailText>
           <Label>Status:</Label> {status}
         </DetailText>
-      </Box>
+      </TopBox>
 
       <Section>
         <Title>Items ({items.length})</Title>
