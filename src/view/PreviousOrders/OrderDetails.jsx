@@ -35,7 +35,7 @@ const TopBox = styled.div`
   gap: 0.5rem;
   box-sizing: border-box;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 0;
   margin-bottom: 10px;
   max-width: 500px;
   width: 100%;
@@ -147,25 +147,25 @@ const OrderDetails = () => {
 
       <Section>
         <Title>Payment & Shipping</Title>
-        <Box>
+        <TopBox>
           <DetailText>
             <Label>Payment Mode: </Label> <span>{paymentMode}</span>
           </DetailText>
 
           <Label>Shipping Address:</Label>
           <p>{shippingAddress}</p>
-        </Box>
+        </TopBox>
       </Section>
 
       <Section>
         <Title>Order Summary</Title>
-        <Box>
+        <TopBox>
           {summary.map((item, index) => (
             <SummaryItem key={index} isBold={item.isBold}>
               <span>{item.label} </span> <span>{item.value}</span>
             </SummaryItem>
           ))}
-        </Box>
+        </TopBox>
       </Section>
     </Container>
   );

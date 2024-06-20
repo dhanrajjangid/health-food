@@ -8,11 +8,14 @@ import {
   ProductPrice,
 } from "./StyledComponents";
 import { formatDate } from "../../../utils";
+import { useNavigate } from "react-router-dom";
 
 const OrderItem = ({ order }) => {
+  const navigate = useNavigate();
+
   return (
-    <ProductInfo>
-      <div style={{ width: '100%', display: "flex", gap: "10px" }}>
+    <ProductInfo onClick={() => navigate(`/order-history/${order?._id}`)}>
+      <div style={{ width: "100%", display: "flex", gap: "10px" }}>
         <ProductImage
           src={order?.productId?.imageUrl || "https://via.placeholder.com/100"}
           alt={order?.productId?.name}
