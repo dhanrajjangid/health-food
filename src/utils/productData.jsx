@@ -12,3 +12,34 @@ export const products = [
     { id: 9, name: 'Product 9', price: 15, image:  "https://images.pexels.com/photos/1148957/pexels-photo-1148957.jpeg" },
     { id: 10, name: 'Product 10', price: 15, image:  "https://images.pexels.com/photos/1566435/pexels-photo-1566435.jpeg" }
   ];
+
+export const fakeOrderData = {
+  orderId: '#346-987680002',
+  deliveryDate: '15 May, at 13:00 PM',
+  total: 'IDR 225,000',
+  status: 'Shipped',
+  items: [
+    {
+      id: 1,
+      name: 'Corduroy Pants',
+      seller: 'Amanda',
+      qty: 1,
+      imgSrc: 'corduroy_pants.jpg',
+    },
+    {
+      id: 2,
+      name: 'Cotton Shirts',
+      seller: 'Amanda',
+      qty: 1,
+      imgSrc: 'cotton_shirts.jpg',
+    },
+  ],
+  paymentMode: 'VISA Classic',
+  shippingAddress: 'Amanda Ramadita, Casa Andara Residence, 16540, Jakarta, Indonesia',
+  summary: [
+    { label: `Items (${2}):`, value: 'IDR 440,000' },
+    { label: 'Postage and Packing:', value: 'IDR 10,000' },
+    { label: 'Tax:', value: 'IDR 6,500' },
+    { label: 'Total:', value: 'IDR 456,500', isBold: true },
+  ],
+};

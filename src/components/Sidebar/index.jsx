@@ -57,7 +57,7 @@ const Sidebar = () => {
     },
     {
       title: "My Orders",
-      path: "/previous-orders",
+      path: "/order-history",
       icon: <AiOutlineBook />,
     },
     {

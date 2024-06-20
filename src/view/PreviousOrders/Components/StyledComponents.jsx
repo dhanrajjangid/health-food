@@ -7,14 +7,6 @@ const theme = {
   backgroundColor: "#f8f9fa",
 };
 
-export const StyledOrderItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ccc;
-`;
-
 export const ProductImage = styled.img`
   height: 80px;
   width: 80px;
@@ -23,7 +15,10 @@ export const ProductImage = styled.img`
 
 export const ProductInfo = styled.div`
   display: flex;
+  padding: 10px 0;
+  margin-bottom: 10px;
   width: 100%;
+  border-bottom: 1px solid #ccc;
   justify-content: space-between;
 `;
 

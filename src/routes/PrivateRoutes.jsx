@@ -19,6 +19,7 @@ import Privacy from "@/view/Policies/PrivacyPolicy";
 import RefundPolicy from "@/view/Policies/RefundPolicy";
 import ContactUs from "@/view/ContactUs";
 import OrderSuccess from "@/view/OrderSuccess";
+import OrderDetails from "@/view/PreviousOrders/OrderDetails";
 
 const PrivateLayout = ({ children }) => {
   const dispatch = useDispatch();
@@ -92,8 +93,12 @@ const privateRoutes = [
         element: <OrderConfirm />,
       },
       {
-        path: "/previous-orders",
+        path: "/order-history",
         element: <PreviousOrders />,
+      },
+      {
+        path: "/order-history/:id",
+        element: <OrderDetails />,
       },
       {
         path: "/item-detail/:id",
