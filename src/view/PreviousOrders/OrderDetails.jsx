@@ -17,8 +17,6 @@ const BackButton = styled.button`
   color: #333;
   font-size: 1.5rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
   margin-bottom: 20px;
 `;
 
@@ -33,7 +31,8 @@ const Title = styled.h2`
 `;
 
 const Box = styled.div`
-  background-color: #fff;
+ background: #1a1a1a;
+  color: #fff;
   display: flex;
   gap: 0.5rem;
   box-sizing: border-box;
