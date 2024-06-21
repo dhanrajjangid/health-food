@@ -17,7 +17,7 @@ const OrderItem = ({ order }) => {
     <ProductInfo onClick={() => navigate(`/order-history/${order?._id}`)}>
       <div style={{ width: "100%", display: "flex", gap: "10px" }}>
         <ProductImage
-          src={order?.productId?.imageUrl || "https://via.placeholder.com/100"}
+          src={order?.items?.[0]?.image || "https://via.placeholder.com/100"}
           alt={order?.productId?.name}
         />
         <ProductContent>
@@ -29,7 +29,7 @@ const OrderItem = ({ order }) => {
               justifyContent: "space-between",
             }}
           >
-            <Quantity>{formatDate(order?.orderDate)}</Quantity>
+            <Quantity>{order?.orderDate && formatDate(order?.orderDate)}</Quantity>
             <Quantity>{`(${order?.items?.length} ${
               order?.items?.length > 1 ? "Items" : "Item"
             })`}</Quantity>

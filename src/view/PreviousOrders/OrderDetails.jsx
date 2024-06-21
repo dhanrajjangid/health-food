@@ -48,7 +48,7 @@ const OrderDetails = () => {
           <Label>Order ID:</Label> <span>{orderData?._id}</span>
         </DetailText>
         <DetailText>
-          <Label>Order Date:</Label> {formatDate(orderData?.orderDate)}
+          <Label>Order Date:</Label> {orderData?.orderDate && formatDate(orderData?.orderDate)}
         </DetailText>
         <DetailText>
           <Label>Total:</Label> {orderData?.paymentId?.amount}
@@ -59,7 +59,7 @@ const OrderDetails = () => {
       </TopBox>
 
       <Section>
-        <Title>Items ({items.length})</Title>
+        <Title>Items ({orderData?.items?.length})</Title>
         <Box>
           {orderData?.items?.map((item) => (
             <Item key={item.id}>
