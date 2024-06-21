@@ -7,7 +7,7 @@ import {
   Quantity,
   ProductPrice,
 } from "./StyledComponents";
-import { formatDate } from "../../../utils";
+import { formatDate } from "@/utils";
 import { useNavigate } from "react-router-dom";
 
 const OrderItem = ({ order }) => {

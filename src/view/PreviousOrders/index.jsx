@@ -6,7 +6,7 @@ import OrderItem from "./Components/OrderItem";
 const PreviousOrders = () => {
   const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
 
-  const getOrders = usePrevious();
+  const {getOrders} = usePrevious();
   const [orderList, setOrderList] = useState();
   const getData = async () => {
     const response = await getOrders(player_id);

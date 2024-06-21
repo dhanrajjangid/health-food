@@ -1,105 +1,41 @@
-// src/components/OrderDetails.js
-import React from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom"; // Use useHistory if you are using React Router v5
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { fakeOrderData } from "@/utils/productData";
-import { FaArrowLeft } from "react-icons/fa"; // Ensure you have react-icons installed
-
-const Container = styled.div`
-  padding: 20px;
-  box-sizing: border-box;
-  color: #333;
-`;
-
-const BackButton = styled.button`
-  background: none;
-  border: none;
-  color: #333;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-bottom: 20px;
-`;
-
-const Section = styled.div`
-  margin-bottom: 20px;
-  box-sizing: border-box;
-`;
-
-const Title = styled.h2`
-  margin-bottom: 10px;
-  box-sizing: border-box;
-`;
-
-const TopBox = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  box-sizing: border-box;
-  flex-direction: column;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  max-width: 500px;
-  width: 100%;
-`;
-
-const Box = styled.div`
-  background: #1a1a1a;
-  color: #fff;
-  display: flex;
-  gap: 0.5rem;
-  box-sizing: border-box;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 10px;
-  max-width: 500px;
-  width: 100%;
-`;
-
-const DetailText = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Label = styled.span`
-  font-weight: bold;
-`;
-
-const Item = styled.div`
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-const ItemDetails = styled.div`
-  flex: 1;
-  margin-left: 10px;
-`;
-
-const SummaryItem = styled.div`
-  display: flex;
-  box-sizing: border-box;
-  justify-content: space-between;
-  font-weight: ${(props) => (props.isBold ? "bold" : "normal")};
-`;
+import { FaArrowLeft } from "react-icons/fa";
+import { usePrevious } from "./apiFunctions";
+import { formatDate } from "@/utils";
+import {
+  BackButton,
+  Box,
+  Container,
+  DetailText,
+  Item,
+  ItemDetails,
+  Label,
+  Section,
+  SummaryItem,
+  Title,
+  TopBox,
+} from "./Components/StyledComponents";
 
 const OrderDetails = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { getOrderById } = usePrevious();
 
-  const {
-    orderId,
-    deliveryDate,
-    total,
-    status,
-    items,
-    paymentMode,
-    shippingAddress,
-    summary,
-  } = fakeOrderData;
+  const [orderData, setOrderData] = useState({});
+
+  const getData = async () => {
+    const response = await getOrderById(id);
+    setOrderData(response?.order);
+  };
+  useEffect(() => {
+    if (id) {
+      getData();
+    }
+  }, [id]);
+
+  const { items, paymentMode, shippingAddress } = fakeOrderData;
 
   return (
     <Container>
@@ -109,26 +45,27 @@ const OrderDetails = () => {
       <Title>Order Details</Title>
       <TopBox>
         <DetailText>
-          <Label>Order ID:</Label> <span>{orderId}</span>
+          <Label>Order ID:</Label> <span>{orderData?._id}</span>
         </DetailText>
         <DetailText>
-          <Label>Delivery:</Label> {deliveryDate}
+          <Label>Order Date:</Label> {formatDate(orderData?.orderDate)}
         </DetailText>
         <DetailText>
-          <Label>Total:</Label> {total}
+          <Label>Total:</Label> {orderData?.paymentId?.amount}
         </DetailText>
         <DetailText>
-          <Label>Status:</Label> {status}
+          <Label>Payment Status:</Label> {orderData?.status}
         </DetailText>
       </TopBox>
 
       <Section>
         <Title>Items ({items.length})</Title>
         <Box>
-          {items.map((item) => (
+          {orderData?.items?.map((item) => (
             <Item key={item.id}>
               <img
                 src={
+                  item?.image ||
                   "https://images.pexels.com/photos/7303902/pexels-photo-7303902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 }
                 alt={item.name}
@@ -137,8 +74,8 @@ const OrderDetails = () => {
               />
               <ItemDetails>
                 <p>{item.name}</p>
-                <Label>Price: ₹{item.price}</Label>
-                <p>Qty: {item.qty}</p>
+                <p>Price: ₹{item.price}</p>
+                <p>Quantity: {item.quantity}</p>
               </ItemDetails>
             </Item>
           ))}
@@ -160,9 +97,18 @@ const OrderDetails = () => {
       <Section>
         <Title>Order Summary</Title>
         <TopBox>
-          {summary.map((item, index) => (
+          {[
+            { label: `Subtotal: (${2}):`, value: orderData?.paymentId?.amount },
+            { label: "Delivery Charges:", value: "0.00" },
+            { label: "Tax:", value: "0" },
+            {
+              label: "Total:",
+              value: orderData?.paymentId?.amount,
+              isBold: true,
+            },
+          ].map((item, index) => (
             <SummaryItem key={index} isBold={item.isBold}>
-              <span>{item.label} </span> <span>{item.value}</span>
+              <span>{item.label} </span> <span>₹{item.value}</span>
             </SummaryItem>
           ))}
         </TopBox>
