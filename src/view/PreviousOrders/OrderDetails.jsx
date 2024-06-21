@@ -17,6 +17,7 @@ import {
   Title,
   TopBox,
 } from "./Components/StyledComponents";
+import { formatAddress } from "@/utils";
 
 const OrderDetails = () => {
   const navigate = useNavigate();
@@ -48,7 +49,8 @@ const OrderDetails = () => {
           <Label>Order ID:</Label> <span>{orderData?._id}</span>
         </DetailText>
         <DetailText>
-          <Label>Order Date:</Label> {orderData?.orderDate && formatDate(orderData?.orderDate)}
+          <Label>Order Date:</Label>{" "}
+          {orderData?.orderDate && formatDate(orderData?.orderDate)}
         </DetailText>
         <DetailText>
           <Label>Total:</Label> {orderData?.paymentId?.amount}
@@ -90,7 +92,7 @@ const OrderDetails = () => {
           </DetailText>
 
           <Label>Shipping Address:</Label>
-          <p>{shippingAddress}</p>
+          <p>{orderData?.address && formatAddress(orderData?.address)}</p>
         </TopBox>
       </Section>
 

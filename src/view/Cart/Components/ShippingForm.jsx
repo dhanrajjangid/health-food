@@ -13,17 +13,17 @@ import {
 } from "@/components/Common/FormInputs";
 
 const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
+  name: Yup.string().required("First Name is required"),
   phoneNumber: Yup.string().required("Phone number is required"),
   addressLine1: Yup.string().required("Address Line 1 is required"),
+  addressLine2: Yup.string(),
   city: Yup.string().required("City is required"),
   state: Yup.string().required("State is required"),
-  pincode: Yup.string().required("Pincode is required"),
+  country: Yup.string().required("Country is required"),
+  postalCode: Yup.string().required("Postal Code is required"),
 });
 
-const ShippingForm = ({triggerSubmit}) => {
+const ShippingForm = ({ triggerSubmit }) => {
   const {
     control,
     setValue,
@@ -39,25 +39,11 @@ const ShippingForm = ({triggerSubmit}) => {
 
   const fields = [
     {
-      name: "firstName",
-      placeholder: "First Name",
+      name: "name",
+      placeholder: "Name",
       validation: validationSchema.fields.firstName,
     },
-    {
-      name: "lastName",
-      placeholder: "Last Name",
-      validation: validationSchema.fields.lastName,
-    },
-    {
-      name: "email",
-      placeholder: "Email",
-      validation: validationSchema.fields.email,
-    },
-    {
-      name: "phoneNumber",
-      placeholder: "Phone Number",
-      validation: validationSchema.fields.phoneNumber,
-    },
+
     {
       name: "addressLine1",
       placeholder: "Address Line 1",
@@ -79,9 +65,19 @@ const ShippingForm = ({triggerSubmit}) => {
       validation: validationSchema.fields.state,
     },
     {
-      name: "pincode",
-      placeholder: "Pincode",
+      name: "country",
+      placeholder: "Country",
+      validation: validationSchema.fields.email,
+    },
+    {
+      name: "postalCode",
+      placeholder: "Pincode/Postal Code",
       validation: validationSchema.fields.pincode,
+    },
+    {
+      name: "phoneNumber",
+      placeholder: "Phone Number",
+      validation: validationSchema.fields.phoneNumber,
     },
   ];
 
@@ -109,14 +105,6 @@ const ShippingForm = ({triggerSubmit}) => {
             />
           </FieldContainer>
         ))}
-        {/* <ContainedButton
-          backgroundColor="#3B3C36"
-          borderColor="#3B3C36"
-          hoverColor="#3B3C36"
-          type="submit"
-        >
-          Proceed To Checkout
-        </ContainedButton> */}
       </Form>
     </>
   );

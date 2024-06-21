@@ -6,3 +6,34 @@ export function formatDate(dateStr) {
 
     return formattedDate;
 }
+
+export const formatAddress = (address) => {
+    const {
+      name,
+      phoneNumber,
+      addressLine1,
+      addressLine2,
+      city,
+      state,
+      postalCode,
+      country,
+    } = address;
+  
+    const addressParts = [
+      name,
+      addressLine1,
+      addressLine2,
+      city,
+      state,
+      postalCode,
+      country,
+      phoneNumber,
+    ];
+  
+    const filteredAddressParts = addressParts?.filter(
+      (part) => part && part?.trim() !== ""
+    );
+  
+    return filteredAddressParts?.join(", ");
+  };
+  

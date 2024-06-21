@@ -39,16 +39,17 @@ const CartPage = () => {
     setShowPopup(false);
   };
 
-  const triggerSubmit = () => {
+  const triggerSubmit = (data) => {
     const items = cartItems?.map((item) => ({
       id: item?.productId?._id,
       quantity: item?.quantity,
     }));
-    const data = {
+    const requestData = {
       playerId: player_id,
       items: items,
+      address: data
     };
-    handlePayment(data);
+    handlePayment(requestData);
   };
 
   const handleConfirmOrder = () => {
