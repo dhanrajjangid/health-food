@@ -44,7 +44,7 @@ const OrderSuccess = () => {
           Your order will be ready in a week, including shipping. More details
           and options for tracking will be available in "ORDER STATUS" menu.
         </Description>
-        <ContainedButton navigate={() => navigate("/")}>
+        <ContainedButton onClick={() => navigate("/")}>
           CONTINUE SHOPPING
         </ContainedButton>
       </Card>

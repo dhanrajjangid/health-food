@@ -42,35 +42,31 @@ export const useCart = () => {
     }
   };
 
-  const handlePayment = async (player_id) => {
+  const handlePayment = async (data) => {
     try {
       // Step 1: Create an order on the backend
-      const orderResponse = await postApiData('/payment/create-order', {
-        playerId: player_id,
-        amount: 500
-      });
-      const { id: order_id } = orderResponse;
-      console.log(order_id, "reached")
-      
+      const orderResponse = await postApiData('/order/createOrder', data);
+      const { amount, razorpayOrderId } = orderResponse;
+  
       // Step 2: Initialize Razorpay and open the checkout
       const options = {
-        key: razor_key_id, // Replace with your Razorpay key_id
-        amount: '50000', // Amount in paise (50000 paise = 500 INR)
+        key: razor_key_id, 
+        amount: amount,
         currency: 'INR',
         name: 'Dhanraj Jangid',
         description: 'Test Transaction',
-        order_id: order_id, // Order ID from backend
+        order_id: razorpayOrderId,
         handler: async (response) => {
           const { razorpay_payment_id, razorpay_signature } = response;
           // Step 3: Verify the payment on the backend
           const paymentData = {
-            razorpay_order_id: response.razorpay_order_id,
+            razorpay_order_id: razorpayOrderId,
             razorpay_payment_id: razorpay_payment_id,
             razorpay_signature: razorpay_signature
           };
-
-          const verificationResponse = await postApiData('/payment/verify-payment', paymentData);
-
+  
+          const verificationResponse = await postApiData('/payment/verifyPayment', paymentData);
+  
           if (verificationResponse.status === 'success') {
             navigate('/order-success');
           } else {
@@ -86,7 +82,7 @@ export const useCart = () => {
           color: '#3399cc'
         }
       };
-
+  
       const rzp1 = new window.Razorpay(options);
       rzp1.open();
     } catch (error) {
@@ -94,6 +90,8 @@ export const useCart = () => {
       alert('Payment failed');
     }
   };
+  
+  
 
   return { createOrder, getCartItems, removeItem, handlePayment };
 };

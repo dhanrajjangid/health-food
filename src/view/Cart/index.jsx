@@ -39,14 +39,24 @@ const CartPage = () => {
     setShowPopup(false);
   };
 
-  const triggerSubmit = (data) => {
-    handlePayment(player_id);
+  const triggerSubmit = () => {
+    const items = cartItems?.map((item) => ({
+      id: item?.productId?._id,
+      quantity: item?.quantity,
+    }));
+    const data = {
+      playerId: player_id,
+      items: items,
+    };
+    handlePayment(data);
   };
 
   const handleConfirmOrder = () => {
     const form = document.getElementById("shippingForm");
     if (form) {
-      form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+      form.dispatchEvent(
+        new Event("submit", { cancelable: true, bubbles: true })
+      );
     }
   };
 
