@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: ${props => props.isPopup ? '50vh' : '90vh'};
   padding: 0 20px;
 `;
 
@@ -16,7 +16,7 @@ export const Title = styled.h2`
 
 export const Form = styled.form`
   box-sizing: border-box;
-  width: 25%;
+  width: ${props => props.isPopup ? '100%' : '50%'};
   padding: 1rem;
 
   @media (max-width: 1025px) {

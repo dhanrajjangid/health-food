@@ -33,7 +33,8 @@ const PrivateLayout = ({ children }) => {
     }
   }, [storedUser]);
 
-  return storedUser ? (
+  return (
+    // storedUser ? (
     <div style={{ height: "100vh", display: "flex" }}>
       <Sidebar />
       <div
@@ -62,9 +63,10 @@ const PrivateLayout = ({ children }) => {
       </div>
       <CartButton />
     </div>
-  ) : (
-    <Navigate to="/login" />
   );
+  // ) : (
+  // <Navigate to="/login" />
+  // );
 };
 
 const privateRoutes = [

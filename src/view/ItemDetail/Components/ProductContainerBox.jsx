@@ -15,10 +15,17 @@ import {
 } from "./StyledComponents";
 import { useItemDetail } from "../apiFunctions";
 import ImageSlider from "@/components/Common/ImageSlider";
+import { useEffect } from "react";
 
-export const ProductContainerBox = ({ productDetails }) => {
+export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
   const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
   const { addToCart } = useItemDetail();
+  const storedUser = localStorage.getItem("user");
+  useEffect(() => {
+    if (storedUser) {
+      setOpenLogin(false);
+    }
+  }, [storedUser]);
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -34,7 +41,9 @@ export const ProductContainerBox = ({ productDetails }) => {
   ];
   return (
     <ProductContainer>
+      {/* <div> */}
       <ImageSlider images={images} />
+      {/* </div> */}
       <ProductDetails>
         <div
           style={{
@@ -60,11 +69,13 @@ export const ProductContainerBox = ({ productDetails }) => {
         <ButtonContainer>
           <ContainedButton
             onClick={() =>
-              addToCart({
-                playerId: player_id,
-                productId: productDetails?._id,
-                quantity: 1,
-              })
+              storedUser
+                ? addToCart({
+                    playerId: player_id,
+                    productId: productDetails?._id,
+                    quantity: 1,
+                  })
+                : setOpenLogin(true)
             }
           >
             <AiOutlineShoppingCart />

@@ -8,6 +8,7 @@ export const Container = styled.div`
   justify-content: center;
   height: 90vh;
   padding: 0 20px;
+  
 `;
 
 export const Title = styled.h2`

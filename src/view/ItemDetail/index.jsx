@@ -12,6 +12,7 @@ import { useItemDetail } from "./apiFunctions";
 import { AdditionalDetailsBox } from "./Components/AdditionalDetailsBox";
 import { ProductContainerBox } from "./Components/ProductContainerBox";
 import { TextField } from "@/components/Common/FormInputs";
+import AuthPopup from "@/components/AuthPopup";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -20,6 +21,7 @@ const ItemDetail = () => {
 
   const [productDetails, setProductDetails] = useState({});
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
 
   const getProduct = async (id) => {
     try {
@@ -36,6 +38,7 @@ const ItemDetail = () => {
 
   return (
     <MainDiv>
+      {openLogin && <AuthPopup />}
       <TopBar>
         <LeftArrow onClick={() => navigate("/home")} />
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -49,7 +52,10 @@ const ItemDetail = () => {
           )}
         </div>
       </TopBar>
-      <ProductContainerBox productDetails={productDetails} />
+      <ProductContainerBox
+        setOpenLogin={setOpenLogin}
+        productDetails={productDetails}
+      />
       <AdditionalDetailsBox productDetails={productDetails} />
     </MainDiv>
   );

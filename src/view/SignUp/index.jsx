@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useRegister } from "./apiFunctions";
 import * as Yup from "yup";
@@ -36,9 +36,20 @@ const SignUp = () => {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.loggedIn);
   const registerUser = useRegister(); // Assuming you have a custom hook for registration
+  const location = useLocation();
+
+  const [isPopup, setIsPopup] = useState()
+
+const pathname = location.pathname
+
+  useEffect(()=> {
+    if(pathname !== '/signup'){
+      setIsPopup(true)
+    }
+  },[pathname])
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && !isPopup) {
       navigate("/");
     }
   }, [isAuthenticated, navigate]);
@@ -100,9 +111,9 @@ const SignUp = () => {
   ];
 
   return (
-    <Container>
+    <Container isPopup={isPopup}>
       <Title>Sign Up</Title>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)} isPopup={isPopup}>
         {fields.map((item, index) => (
           <FieldContainer key={index}>
             {item.type === "checkbox" ? (

@@ -31,8 +31,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const isOpen = useSelector((state) => state.sidebar.open);
   const pathname = window.location.pathname;
-
-  console.log(isOpen, "is open is consoled here")
+  const storedUser = localStorage.getItem("user");
 
   const handleNavigation = (path) => {
     navigate(path);
@@ -67,13 +66,36 @@ const Sidebar = () => {
     }
   ];
 
+  const guestMenu = [
+    {
+      title: "Home",
+      path: "/home",
+      icon: <AiOutlineHome />,
+    },
+    {
+      title: "Cart",
+      path: "/cart",
+      icon: <AiOutlineShoppingCart />,
+    },
+    {
+      title: "Login",
+      path: "/login",
+      icon: <AiOutlineBook />,
+    },
+    {
+      title: "Sign Up",
+      path: "/signup",
+      icon: <AiOutlineUserProfile />,
+    }
+  ];
+
   return (
     <SidebarContainer isopen={isOpen}>
       <SidebarNav>
         <div className="flex-center">
           <ProfilePhoto src={ProfileImg} alt="Profile" />
         </div>
-        {menuItems.map((item, index) => {
+        {(storedUser ? menuItems : guestMenu)?.map((item, index) => {
           return (
             <SidebarItem
               key={index}

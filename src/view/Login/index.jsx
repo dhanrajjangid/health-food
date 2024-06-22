@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogin } from "./apiFunctions";
 import * as Yup from "yup"; // Import Yup
@@ -24,9 +24,13 @@ const validationSchema = Yup.object().shape({
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+
   const isAuthenticated = useSelector((state) => state.auth.loggedIn);
   const user = useSelector((state) => state.auth.user);
   const login = useLogin();
+
+  const [isPopup, setIsPopup] = useState()
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -36,7 +40,7 @@ const LoginForm = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && !isPopup) {
       navigate("/");
     }
   }, [isAuthenticated, navigate]);
@@ -72,10 +76,18 @@ const LoginForm = () => {
     },
   ];
 
+  const pathname = location.pathname
+
+  useEffect(()=> {
+    if(pathname !== '/login'){
+      setIsPopup(true)
+    }
+  },[pathname])
+
   return (
-    <Container>
+    <Container isPopup={isPopup}>
       <Title>Sign In</Title>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)} isPopup={isPopup}>
         {fields.map((item, index) => (
           <FieldContainer key={index}>
             <Controller

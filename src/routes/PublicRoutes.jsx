@@ -3,7 +3,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import { Navigate } from "react-router-dom";
-import Footer from "@/components/Footer"
+import Footer from "@/components/Footer";
 import Login from "@/view/Login";
 import SignUp from "@/view/SignUp";
 import Terms from "@/view/Policies/TermsAndConditions";
@@ -12,14 +12,52 @@ import RefundPolicy from "@/view/Policies/RefundPolicy";
 import ContactUs from "@/view/ContactUs";
 import ShippingPolicy from "@/view/Policies/ShippingPolicy";
 import CancellationPolicy from "@/view/Policies/CancellationPolicy";
+import MobileMenuButton from "@/components/MenuButton";
+import Sidebar from "../components/Sidebar";
+import { useSelector } from "react-redux";
+import Loader from "@/components/Common/Loader";
+import CartButton from "../components/CartButton";
 
-const PublicLayout = ({ children }) => (
-  <div>
-    <Header />
-    <Outlet />
-    <Footer />
-  </div>
-);
+const PublicLayout = ({ children }) => {
+  const loading = useSelector((state) => state.loading.isLoading);
+
+  return (
+    // <div>
+    //   <Header />
+    //   <Outlet />
+    //   <Footer />
+    // </div>
+
+    <div style={{ height: "100vh", display: "flex" }}>
+      <Sidebar />
+      <div
+        style={{
+          boxSizing: "border-box",
+          padding: "0.5rem",
+          width: "100%",
+          position: "relative",
+        }}
+      >
+        <MobileMenuButton />
+        <div
+          style={{
+            boxSizing: "border-box",
+            maxHeight: "calc(100vh - 100px)",
+            overflowY: "auto",
+            marginTop: "50px",
+          }}
+          onClick={() => dispatch(actions.toggleSidebar(false))}
+        >
+          <Loader open={loading} />
+
+          <Outlet />
+          <Footer />
+        </div>
+      </div>
+      <CartButton />
+    </div>
+  );
+};
 
 const publicRoutes = [
   {
