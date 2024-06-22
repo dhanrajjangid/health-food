@@ -82,7 +82,7 @@ const CartPage = () => {
         hoverColor="#3B3C36"
         onClick={handleConfirmOrder}
       >
-        Confirm Order
+        Confirm & Pay
       </ContainedButton>
     </CartPageContainer>
   );

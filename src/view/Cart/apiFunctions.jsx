@@ -69,6 +69,10 @@ export const useCart = () => {
   
           if (verificationResponse.status === 'success') {
             navigate('/order-success');
+            const dataLayer = window.dataLayer || [];
+            dataLayer.push({
+              event: 'conversionClick',
+            });
           } else {
             alert('Payment verification failed');
           }
