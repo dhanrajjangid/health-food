@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import LoginForm from "../../view/Login";
 import SignUp from "@/view/SignUp";
+import { ContainedButton } from "../Common/FormInputs";
+import { useSelector } from "react-redux";
 
 const Tab = styled.button`
-  background: ${({ active }) => (active ? '#fff' : '#1a1a1a')};
-  color: ${({ active }) => (active ? '#1a1a1a' : '#fff')};
+  background: ${({ active }) => (active ? "#fff" : "#1a1a1a")};
+  color: ${({ active }) => (active ? "#1a1a1a" : "#fff")};
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -52,10 +54,11 @@ const TabContainerBox = styled.div`
   justify-content: center;
   background-color: #fff;
   width: fit-content;
-`
+`;
 
-const AuthPopup = () => {
+const AuthPopup = ({ setOpenLogin }) => {
   const [activeTab, setActiveTab] = useState("login");
+  const isAuthenticated = useSelector((state) => state.auth.loggedIn);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -76,21 +79,32 @@ const AuthPopup = () => {
     <Container>
       <Overlay>
         <Popup>
-          <TabContainerBox>
-            <Tab
-              active={activeTab === "login"}
-              onClick={() => handleTabClick("login")}
-            >
-              Login
-            </Tab>
-            <Tab
-              active={activeTab === "signup"}
-              onClick={() => handleTabClick("signup")}
-            >
-              Sign Up
-            </Tab>
-          </TabContainerBox>
-          {renderForm()}
+          {isAuthenticated ? (
+            <div style={{padding: '2rem'}}>
+              <h2 style={{marginBottom: '2rem'}}> Authentication Successful</h2>
+              <ContainedButton onClick={() => setOpenLogin(false)}>
+                Close
+              </ContainedButton>
+            </div>
+          ) : (
+            <>
+              <TabContainerBox>
+                <Tab
+                  active={activeTab === "login"}
+                  onClick={() => handleTabClick("login")}
+                >
+                  Login
+                </Tab>
+                <Tab
+                  active={activeTab === "signup"}
+                  onClick={() => handleTabClick("signup")}
+                >
+                  Sign Up
+                </Tab>
+              </TabContainerBox>
+              {renderForm()}{" "}
+            </>
+          )}
         </Popup>
       </Overlay>
     </Container>

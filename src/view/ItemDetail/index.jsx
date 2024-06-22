@@ -38,7 +38,7 @@ const ItemDetail = () => {
 
   return (
     <MainDiv>
-      {openLogin && <AuthPopup />}
+      {openLogin && <AuthPopup setOpenLogin={setOpenLogin}/>}
       <TopBar>
         <LeftArrow onClick={() => navigate("/home")} />
         <div style={{ display: "flex", alignItems: "center" }}>
