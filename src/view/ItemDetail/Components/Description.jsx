@@ -30,7 +30,7 @@ const Description = ({ productDetails }) => {
         {activeTab === "specifications" && (
           <AdditionalDetails>
             <DetailItem>
-              <strong>Dimensions:</strong> {productDetails?.dimensions?.length}
+              <strong>Dimensions:</strong> {productDetails?.dimensions?.length || ' (L x W x H) = (3.9 x 3.9 x 10.0) Inch.'}
             </DetailItem>
             <DetailItem>
               <strong>Color:</strong> {productDetails?.color}
@@ -44,7 +44,8 @@ const Description = ({ productDetails }) => {
           </AdditionalDetails>
         )}
         {activeTab === "howToUse" && (
-          <p>Insert relevant instructions on how to use the product here...</p>
+          <p>Place it on a shelf, mantelpiece, or side table to add aesthetic appeal to your living room,
+             bedroom, or any other suitable space.</p>
         )}
       </TabContent>
     </DescriptionContainer>
