@@ -55,8 +55,8 @@ export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
         >
           <Category>{productDetails?.category}</Category>
           <RatingContainer>
-            <Stars>{renderStars(productDetails?.rating)}</Stars>
-            <RatingCount>({productDetails?.ratingCount || 0})</RatingCount>
+            <Stars>{renderStars(productDetails?.rating || 4.5)}</Stars>
+            <RatingCount>({productDetails?.ratingCount || 2})</RatingCount>
           </RatingContainer>
         </div>
         <Title>{productDetails?.name}</Title>

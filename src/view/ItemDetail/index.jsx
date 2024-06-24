@@ -9,10 +9,11 @@ import {
   AnimatedTextField,
 } from "./Components/StyledComponents";
 import { useItemDetail } from "./apiFunctions";
-import { AdditionalDetailsBox } from "./Components/AdditionalDetailsBox";
 import { ProductContainerBox } from "./Components/ProductContainerBox";
 import { TextField } from "@/components/Common/FormInputs";
 import AuthPopup from "@/components/AuthPopup";
+import Description from "./Components/Description";
+import Reviews from "./Components/Reviews";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -37,27 +38,30 @@ const ItemDetail = () => {
   }, [id]);
 
   return (
-    <MainDiv>
-      {openLogin && <AuthPopup setOpenLogin={setOpenLogin}/>}
-      <TopBar>
-        <LeftArrow onClick={() => navigate("/home")} />
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <AnimatedTextField isVisible={isSearchOpen}>
-            {isSearchOpen && <TextField borderRadius="10px" />}
-          </AnimatedTextField>
-          {isSearchOpen ? (
-            <CloseIcon onClick={() => setIsSearchOpen(false)} />
-          ) : (
-            <SearchIcon onClick={() => setIsSearchOpen(true)} />
-          )}
-        </div>
-      </TopBar>
-      <ProductContainerBox
-        setOpenLogin={setOpenLogin}
-        productDetails={productDetails}
-      />
-      <AdditionalDetailsBox productDetails={productDetails} />
-    </MainDiv>
+    <>
+      <MainDiv>
+        {openLogin && <AuthPopup setOpenLogin={setOpenLogin} />}
+        <TopBar>
+          <LeftArrow onClick={() => navigate("/home")} />
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <AnimatedTextField isVisible={isSearchOpen}>
+              {isSearchOpen && <TextField borderRadius="10px" />}
+            </AnimatedTextField>
+            {isSearchOpen ? (
+              <CloseIcon onClick={() => setIsSearchOpen(false)} />
+            ) : (
+              <SearchIcon onClick={() => setIsSearchOpen(true)} />
+            )}
+          </div>
+        </TopBar>
+        <ProductContainerBox
+          setOpenLogin={setOpenLogin}
+          productDetails={productDetails}
+        />
+      </MainDiv>
+      <Description productDetails={productDetails} />
+      <Reviews />
+    </>
   );
 };
 

@@ -163,15 +163,7 @@ export const ButtonContainer = styled.div`
 
 export const AdditionalDetails = styled.div`
   width: 100%;
-  max-width: 1200px;
-  padding: 2rem;
   box-sizing: border-box;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-
-  @media (max-width: 480px) {
-    padding: 1rem;
-  }
 `;
 
 export const DetailItem = styled.p`
