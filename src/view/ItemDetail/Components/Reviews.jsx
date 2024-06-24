@@ -32,7 +32,7 @@ export default Reviews;
 const ReviewsContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
 `;
 
 const Title = styled.h2`
@@ -42,7 +42,6 @@ const Title = styled.h2`
 
 const Review = styled.div`
   border: 1px solid #ccc;
-  border-radius: 8px;
   padding: 15px;
   margin-bottom: 20px;
 `;
