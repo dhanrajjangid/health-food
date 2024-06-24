@@ -31,7 +31,6 @@ export default Reviews;
 // Styled Components
 const ReviewsContainer = styled.div`
   max-width: 800px;
-  margin: 0 auto;
   padding: 10px;
 `;
 
