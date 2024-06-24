@@ -68,6 +68,7 @@ export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
         <Price>₹{productDetails?.price}</Price>
         <ButtonContainer>
           <ContainedButton
+            disabled={!(productDetails?.stockQuantity > 0)}
             onClick={() =>
               storedUser
                 ? addToCart({
@@ -79,7 +80,11 @@ export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
             }
           >
             <AiOutlineShoppingCart />
-            <span style={{ marginLeft: "1rem" }}>Add to Cart</span>
+            <span style={{ marginLeft: "1rem" }}>
+              {productDetails?.stockQuantity > 0
+                ? "Add to Cart"
+                : "Out of Stock"}
+            </span>
           </ContainedButton>
         </ButtonContainer>
       </ProductDetails>
