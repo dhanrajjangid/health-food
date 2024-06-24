@@ -10,6 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
+margin: 0;
   text-align: center;
   margin-bottom: 20px;
 `;

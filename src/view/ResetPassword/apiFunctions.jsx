@@ -5,13 +5,15 @@ import { toast } from "react-toastify";
 export const useResetPassword = () => {
   const navigate = useNavigate();
 
-  const forgotPassword = async (email) => {
+  const forgotPassword = async (email, setIsSent) => {
     try {
       const response = await postApiData("/players/forgot-password", { email });
 
-      toast.success("Reset password link sent to your email please check your inbox.");
+      // toast.success(
+      //   "Reset password link sent to your email please check your inbox."
+      // );
 
-      // navigate("/");
+      setIsSent(true);
 
       return response;
     } catch (error) {

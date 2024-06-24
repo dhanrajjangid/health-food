@@ -30,7 +30,7 @@ const LoginForm = () => {
   const user = useSelector((state) => state.auth.user);
   const login = useLogin();
 
-  const [isPopup, setIsPopup] = useState()
+  const [isPopup, setIsPopup] = useState();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -50,7 +50,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { isSubmitting, errors },
   } = useForm({
-    resolver: yupResolver(validationSchema), 
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = async (data) => {
@@ -76,13 +76,13 @@ const LoginForm = () => {
     },
   ];
 
-  const pathname = location.pathname
+  const pathname = location.pathname;
 
-  useEffect(()=> {
-    if(pathname !== '/login'){
-      setIsPopup(true)
+  useEffect(() => {
+    if (pathname !== "/login") {
+      setIsPopup(true);
     }
-  },[pathname])
+  }, [pathname]);
 
   return (
     <Container isPopup={isPopup}>
@@ -114,7 +114,12 @@ const LoginForm = () => {
           {isSubmitting ? "Loading..." : "Log in"}
         </ContainedButton>
       </Form>
-      <p>
+      <p style={{ margin: 0 }}>
+        <SignUpLink onClick={() => navigate("/reset-password")}>
+          Forget Password?
+        </SignUpLink>{" "}
+      </p>
+      <p style={{ margin: 0 }}>
         Do not have an account?{" "}
         <SignUpLink onClick={() => navigate("/signup")}>Sign Up</SignUpLink>{" "}
         here
