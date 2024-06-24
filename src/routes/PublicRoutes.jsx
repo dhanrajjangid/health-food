@@ -1,11 +1,12 @@
 // publicRoutes.js
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "@/components/Header";
 import { Navigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 import Login from "@/view/Login";
 import SignUp from "@/view/SignUp";
+import ResetPassword from "@/view/ResetPassword"
 import Terms from "@/view/Policies/TermsAndConditions";
 import Privacy from "@/view/Policies/PrivacyPolicy";
 import RefundPolicy from "@/view/Policies/RefundPolicy";
@@ -13,10 +14,11 @@ import ContactUs from "@/view/ContactUs";
 import ShippingPolicy from "@/view/Policies/ShippingPolicy";
 import CancellationPolicy from "@/view/Policies/CancellationPolicy";
 import MobileMenuButton from "@/components/MenuButton";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "@/components/Sidebar";
 import { useSelector } from "react-redux";
 import Loader from "@/components/Common/Loader";
-import CartButton from "../components/CartButton";
+import CartButton from "@/components/CartButton";
+import NewPassword from "@/view/ResetPassword/NewPassword";
 
 const PublicLayout = ({ children }) => {
   const loading = useSelector((state) => state.loading.isLoading);
@@ -75,6 +77,14 @@ const publicRoutes = [
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
+      },
+      {
+        path: "/reset-password/:id",
+        element: <NewPassword />,
       },
       {
         path: "/privacy-policy",
