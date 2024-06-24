@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useLogin } from "@/view/Login/apiFunctions";
+import { useResetPassword } from "@/view/ResetPassword/apiFunctions";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { actions as authActions } from "@/redux/slices/authSlice";
@@ -25,7 +25,7 @@ const ResetPassword = () => {
   const dispatch = useDispatch();
 
   const isAuthenticated = useSelector((state) => state.auth.loggedIn);
-  const login = useLogin();
+  const {forgotPassword} = useResetPassword();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -50,7 +50,7 @@ const ResetPassword = () => {
 
   const onSubmit = async (data) => {
     try {
-      await login(data.username, data.password);
+      await forgotPassword(data.email);
     } catch (error) {
       console.error("Login failed:", error);
     }

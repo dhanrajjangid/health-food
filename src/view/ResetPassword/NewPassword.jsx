@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useLogin } from "@/view/Login/apiFunctions";
+import { useResetPassword } from "@/view/ResetPassword/apiFunctions";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { actions as authActions } from "@/redux/slices/authSlice";
@@ -27,10 +27,10 @@ const validationSchema = Yup.object().shape({
 const NewPassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {id} = useParams();
+  const { id } = useParams();
 
   const isAuthenticated = useSelector((state) => state.auth.loggedIn);
-  const login = useLogin();
+  const { newPassword } = useResetPassword();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -55,7 +55,7 @@ const NewPassword = () => {
 
   const onSubmit = async (data) => {
     try {
-      await login(data.newPassword, data.confirmNewPassword);
+      await newPassword(data.newPassword, id);
     } catch (error) {
       console.error("Login failed:", error);
     }
