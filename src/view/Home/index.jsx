@@ -8,10 +8,9 @@ import { useHome } from "./apiFunctions";
 const Home = () => {
   const tabs = ["Featured", "Popular", "New Arrival"];
   const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
-
   const { getCartCount } = useHome();
   useEffect(() => {
-    if (player_id || player_id !== 'undefined') {
+    if (player_id && player_id !== 'undefined') {
       getCartCount(player_id);
     }
   }, [player_id]);
