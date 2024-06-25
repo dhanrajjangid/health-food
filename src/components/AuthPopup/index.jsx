@@ -57,7 +57,7 @@ const TabContainerBox = styled.div`
 `;
 
 const AuthPopup = ({ setOpenLogin }) => {
-  const [activeTab, setActiveTab] = useState("login");
+  const [activeTab, setActiveTab] = useState("signup");
   const isAuthenticated = useSelector((state) => state.auth.loggedIn);
 
   const handleTabClick = (tab) => {
@@ -90,16 +90,16 @@ const AuthPopup = ({ setOpenLogin }) => {
             <>
               <TabContainerBox>
                 <Tab
-                  active={activeTab === "login"}
-                  onClick={() => handleTabClick("login")}
-                >
-                  Login
-                </Tab>
-                <Tab
                   active={activeTab === "signup"}
                   onClick={() => handleTabClick("signup")}
                 >
                   Sign Up
+                </Tab>
+                <Tab
+                  active={activeTab === "login"}
+                  onClick={() => handleTabClick("login")}
+                >
+                  Login
                 </Tab>
               </TabContainerBox>
               {renderForm()}{" "}
