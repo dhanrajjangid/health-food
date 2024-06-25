@@ -37,7 +37,7 @@ export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
   };
   const images = [
     productDetails?.imageUrl,
-    "https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://5.imimg.com/data5/SELLER/Default/2023/2/FB/HT/FD/104454190/frosted-glass-sheesham-wooden-lamp-1000x1000.jpg",
   ];
   return (
     <ProductContainer>
