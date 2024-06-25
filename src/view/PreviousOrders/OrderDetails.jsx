@@ -17,9 +17,9 @@ import {
   Title,
   TopBox,
 } from "./Components/StyledComponents";
-import { formatAddress } from "@/utils";
+import { formatAddress, truncatedName } from "@/utils";
 
-const OrderDetails = () => {
+const OrderDetails = ({ maxCharacters = 32 }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { getOrderById } = usePrevious();
@@ -63,24 +63,26 @@ const OrderDetails = () => {
       <Section>
         <Title>Items ({orderData?.items?.length})</Title>
         <Box>
-          {orderData?.items?.map((item) => (
-            <Item key={item.id}>
-              <img
-                src={
-                  item?.image ||
-                  "https://images.pexels.com/photos/7303902/pexels-photo-7303902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                }
-                alt={item.name}
-                width="60"
-                height="60"
-              />
-              <ItemDetails>
-                <p>{item.name}</p>
-                <p>Price: ₹{item.price}</p>
-                <p>Quantity: {item.quantity}</p>
-              </ItemDetails>
-            </Item>
-          ))}
+          {orderData?.items?.map((item) => {
+            return (
+              <Item key={item.id}>
+                <img
+                  src={
+                    item?.image ||
+                    "https://images.pexels.com/photos/7303902/pexels-photo-7303902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  }
+                  alt={item.name}
+                  width="60"
+                  height="60"
+                />
+                <ItemDetails>
+                  <p>{item?.name && truncatedName(item?.name, maxCharacters)}</p>
+                  <p>Price: ₹{item.price}</p>
+                  <p>Quantity: {item.quantity}</p>
+                </ItemDetails>
+              </Item>
+            );
+          })}
         </Box>
       </Section>
 

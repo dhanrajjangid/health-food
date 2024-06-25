@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
+import { truncatedName } from "@/utils";
 
 // Styled components for the card elements
 const CardContainer = styled.div`
@@ -66,10 +67,6 @@ const SlideCard = ({ imageSrc, name, price, maxCharacters = 50 }) => {
     }
     return stars;
   };
-  const truncatedName =
-    name?.length > maxCharacters
-      ? `${name?.substring(0, maxCharacters)}...`
-      : name;
   return (
     <CardContainer>
       <Image src={imageSrc} alt={name} />
@@ -78,7 +75,7 @@ const SlideCard = ({ imageSrc, name, price, maxCharacters = 50 }) => {
           marginTop: "0.5rem",
         }}
       >
-        <Name>{truncatedName}</Name>
+        <Name>{name && truncatedName(name, maxCharacters)}</Name>
         <div
           style={{
             display: "flex",

@@ -1,7 +1,18 @@
 import React from "react";
-import { CartItem as StyledCartItem, ProductInfo, ProductImage, ProductContent, ProductName, Quantity, ProductAction, ProductPrice, DeleteButton } from "./StyledComponents";
+import {
+  CartItem as StyledCartItem,
+  ProductInfo,
+  ProductImage,
+  ProductContent,
+  ProductName,
+  Quantity,
+  ProductAction,
+  ProductPrice,
+  DeleteButton,
+} from "./StyledComponents";
+import { truncatedName } from "@/utils";
 
-const CartItem = ({ item, handleDelete }) => {
+const CartItem = ({ item, handleDelete, maxCharacters = 32 }) => {
   return (
     <StyledCartItem>
       <ProductInfo>
@@ -11,14 +22,18 @@ const CartItem = ({ item, handleDelete }) => {
             alt={item?.productId?.name}
           />
           <ProductContent>
-            <ProductName>{item?.productId?.name}</ProductName>
+            <ProductName>{item?.productId?.name && truncatedName(item?.productId?.name, maxCharacters)}</ProductName>
             <Quantity>Color: {item?.productId?.color}</Quantity>
             <Quantity>Quantity: {item?.quantity || 1}</Quantity>
           </ProductContent>
         </div>
         <ProductAction>
-          <DeleteButton onClick={() => handleDelete(item?.productId)}>x</DeleteButton>
-          <ProductPrice>₹{(item?.productId?.price * item?.quantity)?.toFixed(2)}</ProductPrice>
+          <DeleteButton onClick={() => handleDelete(item?.productId)}>
+            x
+          </DeleteButton>
+          <ProductPrice>
+            ₹{(item?.productId?.price * item?.quantity)?.toFixed(2)}
+          </ProductPrice>
         </ProductAction>
       </ProductInfo>
     </StyledCartItem>
