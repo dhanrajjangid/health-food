@@ -153,7 +153,7 @@ const pathname = location.pathname
           {isSubmitting ? "Loading..." : "Submit"}
         </ContainedButton>
       </Form>
-      <p>
+      <p style={{ margin: 0 }}>
         Already have an account?{" "}
         <SignUpLink onClick={() => navigate("/login")}>Log In</SignUpLink> here
       </p>

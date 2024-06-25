@@ -5,8 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: ${props => props.isPopup ? '50vh' : '90vh'};
-  padding: 0 20px;
+  height: ${props => props.isPopup ? '70vh' : '90vh'};
+  padding: 24px 20px;
 `;
 
 export const Title = styled.h2`
