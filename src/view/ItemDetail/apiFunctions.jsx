@@ -19,7 +19,7 @@ export const useItemDetail = () => {
     try {
       const response = await postApiData(`/cart/add`, { ...payload });
       toast.success("Item Added to cart");
-      getCartCount(payload?.player_id)
+      getCartCount(payload?.playerId)
       return response;
     } catch (error) {
       console.error("Error adding item to cart:", error);
