@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 
 // Styled components for the card elements
 const CardContainer = styled.div`
@@ -23,6 +23,7 @@ const Image = styled.img`
 
 const Name = styled.h5`
   margin: 1px 0;
+  text-overflow: ellipsis;
 `;
 
 const Price = styled.p`
@@ -35,23 +36,64 @@ const CartIcon = styled(AiOutlineShoppingCart)`
   font-size: 25px;
 `;
 
+const RatingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const Stars = styled.div`
+  display: flex;
+`;
+
+const RatingCount = styled.span`
+  font-size: 1rem;
+  color: #555;
+`;
+
 // Card component
-const SlideCard = ({ imageSrc, name, price }) => {
+const SlideCard = ({ imageSrc, name, price, maxCharacters = 50 }) => {
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars?.push(
+        <AiFillStar
+          key={i}
+          color={i <= rating ? "#FFD700" : "#ccc"}
+          style={{ fontSize: "0.7rem" }}
+        />
+      );
+    }
+    return stars;
+  };
+  const truncatedName =
+    name?.length > maxCharacters
+      ? `${name?.substring(0, maxCharacters)}...`
+      : name;
   return (
     <CardContainer>
       <Image src={imageSrc} alt={name} />
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
           marginTop: "0.5rem",
         }}
       >
-        <div>
-          <Name>{name}</Name>
+        <Name>{truncatedName}</Name>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "0.3rem",
+            gap: "0.5rem",
+          }}
+        >
           <Price>₹{price}</Price>
+          <RatingContainer>
+            <Stars>{renderStars(4.5)}</Stars>
+            <RatingCount>(2)</RatingCount>
+          </RatingContainer>
+          {/* <CartIcon onClick={() => alert("Added to cart")} /> */}
         </div>
-        <CartIcon onClick={() => alert("Added to cart")} /> {/* Cart icon */}
       </div>
     </CardContainer>
   );
