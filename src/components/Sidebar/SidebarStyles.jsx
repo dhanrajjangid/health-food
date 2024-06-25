@@ -29,6 +29,10 @@ export const ProfilePhoto = styled.img`
   height: 120px;
   border-radius: 50%;
   margin: 2.5em auto 1.5em 2.5em;
+
+  @media (max-width: 600px) {
+    margin: 2.5em auto 1.5em 1.5em;
+  }
 `;
 
 export const SidebarItem = styled.div`
