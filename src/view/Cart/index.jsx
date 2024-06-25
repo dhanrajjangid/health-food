@@ -47,7 +47,7 @@ const CartPage = () => {
     const requestData = {
       playerId: player_id,
       items: items,
-      address: data
+      address: data,
     };
     handlePayment(requestData);
   };
@@ -74,16 +74,20 @@ const CartPage = () => {
         <CartItem key={index} item={item} handleDelete={handleDelete} />
       ))}
       <CartCalculations totalPrice={totalPrice} />
-      <ShippingForm triggerSubmit={triggerSubmit} />
-      <PaymentBox />
-      <ContainedButton
-        backgroundColor="#3B3C36"
-        borderColor="#3B3C36"
-        hoverColor="#3B3C36"
-        onClick={handleConfirmOrder}
-      >
-        Confirm & Pay
-      </ContainedButton>
+      {cartItems?.length > 0 && (
+        <>
+          <ShippingForm triggerSubmit={triggerSubmit} />
+          <PaymentBox />
+          <ContainedButton
+            backgroundColor="#3B3C36"
+            borderColor="#3B3C36"
+            hoverColor="#3B3C36"
+            onClick={handleConfirmOrder}
+          >
+            Confirm & Pay
+          </ContainedButton>
+        </>
+      )}
     </CartPageContainer>
   );
 };

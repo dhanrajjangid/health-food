@@ -9,6 +9,7 @@ const theme = {
 
 export const CartPageContainer = styled.div`
   padding: 20px;
+  min-height: 70vh;
 `;
 
 export const CartHeader = styled.h2`
