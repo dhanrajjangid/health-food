@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const CartButton = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const cartCount = useSelector((state) => state.cart.count);
 
   const handleResize = () => {
     setScreenWidth(window.innerWidth);
@@ -39,6 +41,22 @@ const CartButton = () => {
       onClick={() => navigate("/cart")}
     >
       <AiOutlineShoppingCart size={28} />
+      <div
+        style={{
+          position: "absolute",
+          top: "-8px",
+          right: "-8px",
+          backgroundColor: "#e5e500",
+          color: "#14c2bf",
+          borderRadius: "50%",
+          padding: "2px",
+          fontSize: "1rem",
+          minWidth: "20px",
+          textAlign: "center",
+        }}
+      >
+        {cartCount}
+      </div>
     </div>
   );
 };

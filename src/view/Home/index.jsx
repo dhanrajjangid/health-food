@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { HomeContainer } from "./Components/StyledComponents";
-import { useNavigate } from "react-router-dom";
 import TabComponent from "@/components/Common/TabComponent";
 import HomeSlider from "./Components/HomeSlider";
 import { SearchFeature } from "../../components/Common/SearchBar";
+import { useHome } from "./apiFunctions";
 
 const Home = () => {
   const tabs = ["Featured", "Popular", "New Arrival"];
+  const player_id = JSON.parse(localStorage.getItem("user"))?.player_id;
+
+  const { getCartCount } = useHome();
+  useEffect(() => {
+    getCartCount(player_id);
+  }, [player_id]);
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 

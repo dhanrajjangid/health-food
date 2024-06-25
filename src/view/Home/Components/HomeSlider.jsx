@@ -18,7 +18,7 @@ const HomeItems = styled.div`
 
 const HomeSlider = () => {
   const navigate = useNavigate();
-  const getProducts = useHome();
+  const {getProducts} = useHome();
 
   const [products, setProducts] = useState([]);
   const getProductList = async () => {
