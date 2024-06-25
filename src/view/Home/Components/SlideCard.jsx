@@ -32,15 +32,10 @@ const Price = styled.p`
   font-size: 16px;
 `;
 
-const CartIcon = styled(AiOutlineShoppingCart)`
-  color: #14c2bf;
-  font-size: 25px;
-`;
-
 const RatingContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
 `;
 
 const Stars = styled.div`
@@ -48,7 +43,7 @@ const Stars = styled.div`
 `;
 
 const RatingCount = styled.span`
-  font-size: 1rem;
+  font-size: 0.7rem;
   color: #555;
 `;
 
@@ -89,7 +84,6 @@ const SlideCard = ({ imageSrc, name, price, maxCharacters = 50 }) => {
             <Stars>{renderStars(4.5)}</Stars>
             <RatingCount>(2)</RatingCount>
           </RatingContainer>
-          {/* <CartIcon onClick={() => alert("Added to cart")} /> */}
         </div>
       </div>
     </CardContainer>
