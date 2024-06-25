@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 import Login from "@/view/Login";
 import SignUp from "@/view/SignUp";
-import ResetPassword from "@/view/ResetPassword"
+import ResetPassword from "@/view/ResetPassword";
 import Terms from "@/view/Policies/TermsAndConditions";
 import Privacy from "@/view/Policies/PrivacyPolicy";
 import RefundPolicy from "@/view/Policies/RefundPolicy";
@@ -46,7 +46,7 @@ const PublicLayout = ({ children }) => {
             boxSizing: "border-box",
             maxHeight: "calc(100vh - 100px)",
             overflowY: "auto",
-            marginTop: "50px",
+            marginTop: "1.5rem",
           }}
           onClick={() => dispatch(actions.toggleSidebar(false))}
         >

@@ -51,7 +51,7 @@ const PrivateLayout = ({ children }) => {
             boxSizing: "border-box",
             maxHeight: "calc(100vh - 100px)",
             overflowY: "auto",
-            marginTop: "50px",
+            marginTop: "1.5rem",
           }}
           onClick={() => dispatch(actions.toggleSidebar(false))}
         >

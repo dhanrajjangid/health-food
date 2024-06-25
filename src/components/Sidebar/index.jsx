@@ -108,12 +108,12 @@ const Sidebar = () => {
             </SidebarItem>
           );
         })}
-        <LogoutButton onClick={handleLogout}>
+        {storedUser && <LogoutButton onClick={handleLogout}>
           <Icon>
             <AiOutlineLogout />
           </Icon>
           Logout
-        </LogoutButton>
+        </LogoutButton>}
       </SidebarNav>
     </SidebarContainer>
   );
