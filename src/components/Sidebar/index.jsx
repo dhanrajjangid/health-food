@@ -40,6 +40,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     dispatch(authActions.logout());
+    dispatch(actions.toggleSidebar(false));
     navigate('/login')
   };
 
