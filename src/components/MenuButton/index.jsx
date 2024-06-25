@@ -46,8 +46,7 @@ const MobileMenuButton = () => {
           // color: "#14c2bf",
           fontSize: "1.5rem",
           margin: 0,
-          paddingLeft: "0.5rem",
-          fontStyle: 'italic'
+          paddingLeft: "0.5rem"
         }}
       >
         BuY MinimaL
