@@ -11,7 +11,9 @@ const Home = () => {
 
   const { getCartCount } = useHome();
   useEffect(() => {
-    getCartCount(player_id);
+    if (player_id || player_id !== 'undefined') {
+      getCartCount(player_id);
+    }
   }, [player_id]);
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
