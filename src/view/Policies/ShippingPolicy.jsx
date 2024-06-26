@@ -5,8 +5,8 @@ const ShippingPolicy = () => {
     return (
       <Container>
         <Title>Shipping Policy</Title>
-        <Paragraph>Welcome to Minimal React!</Paragraph>
-        <Paragraph>This Shipping Policy outlines the estimated delivery times and costs for orders placed on our website, Minimal React (the "Website").</Paragraph>
+        <Paragraph>Welcome to Buy Minimal!</Paragraph>
+        <Paragraph>This Shipping Policy outlines the estimated delivery times and costs for orders placed on our website, Buy Minimal (the "Website").</Paragraph>
         
         <SectionTitle>1. Order Processing</SectionTitle>
         <Paragraph>We aim to process all orders within 4 business days of receipt.</Paragraph>

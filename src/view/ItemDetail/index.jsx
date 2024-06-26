@@ -60,6 +60,10 @@ const ItemDetail = () => {
         />
       </MainDiv>
       <Description productDetails={productDetails} />
+      <div style={{ padding: "10px", display: "flex", alignItems: "center", textDecoration: 'underline' }}>
+        About our refund policy :
+        <p onClick={() => navigate("/refund-policy")}>Click here</p>
+      </div>
       <Reviews />
     </>
   );

@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <Container>
         <Title>Privacy Policy</Title>
         <Paragraph>Welcome to Minimal React!</Paragraph>
-        <Paragraph>We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use our website, https://minimal-react.netlify.app (the "Website").</Paragraph>
+        <Paragraph>We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use our website, https://buyminimal.shop (the "Website").</Paragraph>
         
         <SectionTitle>1. Information We Collect</SectionTitle>
         <Paragraph>We collect the following information when you use the Website:</Paragraph>

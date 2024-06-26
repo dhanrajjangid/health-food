@@ -5,8 +5,8 @@ const TermsAndConditions = () => {
     return (
       <Container>
         <Title>Terms and Conditions</Title>
-        <Paragraph>Welcome to Minimal React!</Paragraph>
-        <Paragraph>These terms and conditions ("Terms") outline the rules and regulations governing your use of our website, https://minimal-react.netlify.app (the "Website").</Paragraph>
+        <Paragraph>Welcome to Buy Minimal!</Paragraph>
+        <Paragraph>These terms and conditions ("Terms") outline the rules and regulations governing your use of our website, https://buyminimal.shop (the "Website").</Paragraph>
         
         <SectionTitle>1. Products and Services</SectionTitle>
         <Paragraph>We offer a variety of digital and physical products for purchase on the Website. These products may include:</Paragraph>

@@ -5,8 +5,8 @@ const CancellationPolicy = () => {
     return (
       <Container>
         <Title>Cancellation Policy</Title>
-        <Paragraph>Welcome to Minimal React!</Paragraph>
-        <Paragraph>This Cancellation Policy outlines the conditions under which you can cancel your order on our website, https://minimal-react.netlify.app (the "Website").</Paragraph>
+        <Paragraph>Welcome to Buy Minimal!</Paragraph>
+        <Paragraph>This Cancellation Policy outlines the conditions under which you can cancel your order on our website, https://buyminimal.shop (the "Website").</Paragraph>
         
         <SectionTitle>1. Cancellation Before Shipment</SectionTitle>
         <Paragraph>You can cancel your order free of charge if you notify us before your order ships.</Paragraph>

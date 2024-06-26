@@ -6,11 +6,11 @@ const RefundPolicy = () => {
     return (
       <Container>
         <Title>Refund Policy</Title>
-        <Paragraph>Welcome to Minimal React!</Paragraph>
-        <Paragraph>We are committed to providing you with a satisfying shopping experience. This Refund Policy outlines the conditions under which we offer refunds for products purchased on our website, [Your Website URL] (the "Website").</Paragraph>
+        <Paragraph>Welcome to Buy Minimal!</Paragraph>
+        <Paragraph>We are committed to providing you with a satisfying shopping experience. This Refund Policy outlines the conditions under which we offer refunds for products purchased on our website, https://buyminimal.shop (the "Website").</Paragraph>
         
         <SectionTitle>1. Digital Products</SectionTitle>
-        <Paragraph>We offer a 7-day return policy for unused and unopened digital products. If you are not satisfied with your digital purchase, you may request a full refund within [Number] days from the date of purchase.</Paragraph>
+        <Paragraph>We offer a 7-day return policy for unused and unopened digital products. If you are not satisfied with your digital purchase, you may request a full refund within 7 days from the date of purchase.</Paragraph>
         <Paragraph>To request a refund for a digital product, please contact us at <EmailLink href="mailto:jangiddhanraj376@gmail.com">jangiddhanraj376@gmail.com</EmailLink> with your order number and reason for return.</Paragraph>
         <Paragraph>Please note that we cannot offer refunds for downloaded digital products.</Paragraph>
         
