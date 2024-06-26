@@ -76,7 +76,9 @@ const OrderDetails = ({ maxCharacters = 32 }) => {
                   height="60"
                 />
                 <ItemDetails>
-                  <p>{item?.name && truncatedName(item?.name, maxCharacters)}</p>
+                  <p>
+                    {item?.name && truncatedName(item?.name, maxCharacters)}
+                  </p>
                   <p>Price: ₹{item.price}</p>
                   <p>Quantity: {item.quantity}</p>
                 </ItemDetails>
@@ -90,7 +92,7 @@ const OrderDetails = ({ maxCharacters = 32 }) => {
         <Title>Payment & Shipping</Title>
         <TopBox>
           <DetailText>
-            <Label>Payment Mode: </Label> <span>{paymentMode}</span>
+            <Label>Payment Mode: </Label> <span>Online</span>
           </DetailText>
 
           <Label>Shipping Address:</Label>
@@ -117,6 +119,10 @@ const OrderDetails = ({ maxCharacters = 32 }) => {
           ))}
         </TopBox>
       </Section>
+      <div>
+        If you have any queries please do not hasitate to contact us at <br />{" "}
+        Email: jangiddhanraj376@gmail.com <br /> Phone: +91 9685010351
+      </div>
     </Container>
   );
 };
