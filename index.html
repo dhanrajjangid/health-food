@@ -7,22 +7,15 @@
     <meta name="google-site-verification" content="SBLT_gwnbPS7RuoMQr4PHptj0DjgdjfjLMpV58YR9XA" />
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10825572126">
+    </script>
     <script>
-      function gtag_report_conversion(url) {
-        var callback = function () {
-          if (typeof(url) != 'undefined') {
-            window.location = url;
-          }
-        };
-        gtag('event', 'conversion', {
-            'send_to': 'AW-10825572126/fiJlCMuw0LwZEJ6-hKoo',
-            'value': 1.0,
-            'currency': 'INR',
-            'transaction_id': '',
-            'event_callback': callback
-        });
-        return false;
-      }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-10825572126');
     </script>
   
     <title>Buy Minimal</title>
