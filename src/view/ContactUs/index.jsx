@@ -42,6 +42,11 @@ const ContactUs = () => {
 
       <Paragraph>We'll get back to you as soon as possible!</Paragraph>
 
+      <Subtitle>Contact Number:</Subtitle>
+      <Paragraph>
+        +91 9685010351
+      </Paragraph>
+
       <Subtitle>Operational Address:</Subtitle>
       <Paragraph>
         35 Suman Nagar, Indore, M.P, India, Pin: 452010.

@@ -9,11 +9,11 @@ const ShippingPolicy = () => {
         <Paragraph>This Shipping Policy outlines the estimated delivery times and costs for orders placed on our website, Buy Minimal (the "Website").</Paragraph>
         
         <SectionTitle>1. Order Processing</SectionTitle>
-        <Paragraph>We aim to process all orders within 4 business days of receipt.</Paragraph>
+        <Paragraph>We aim to process all orders within 5 business days of receipt.</Paragraph>
         
         <SectionTitle>2. Shipping Methods and Costs</SectionTitle>
         <Paragraph>We offer the following shipping methods for orders within India:</Paragraph>
-        <Paragraph><strong>Standard Shipping:</strong> This is our most economical option with an estimated delivery time of 7-10 business days. The shipping cost will be calculated at checkout based on the weight and destination of your order.</Paragraph>
+        <Paragraph><strong>Standard Shipping:</strong> This is our most economical option with an estimated delivery time of 7-12 business days. The shipping cost will be calculated at checkout based on the weight and destination of your order.</Paragraph>
         
         <SectionTitle>3. Free Shipping</SectionTitle>
         <Paragraph>We may offer free shipping promotions from time to time. These promotions will be clearly advertised on the Website.</Paragraph>
