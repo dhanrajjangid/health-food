@@ -63,8 +63,6 @@ const pathname = location.pathname
     resolver: yupResolver(validationSchema),
   });
 
-  console.log(errors, "errors are consoled here");
-
   const onSubmit = async (data) => {
     try {
       await registerUser(data);

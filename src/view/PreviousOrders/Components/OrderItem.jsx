@@ -7,7 +7,7 @@ import {
   Quantity,
   ProductPrice,
 } from "./StyledComponents";
-import { formatDate } from "@/utils";
+import { formatDate, calculateDateAfter } from "@/utils";
 import { useNavigate } from "react-router-dom";
 
 const OrderItem = ({ order }) => {
@@ -34,7 +34,7 @@ const OrderItem = ({ order }) => {
               order?.items?.length > 1 ? "Items" : "Item"
             })`}</Quantity>
           </div>
-          <EstimateDelivery>Estimated delivery on 21 Dec</EstimateDelivery>
+          <EstimateDelivery>Estimated delivery - before {order?.orderDate && calculateDateAfter(11, order?.orderDate)}</EstimateDelivery>
         </ProductContent>
       </div>
     </ProductInfo>

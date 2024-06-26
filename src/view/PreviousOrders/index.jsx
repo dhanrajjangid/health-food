@@ -15,7 +15,6 @@ const PreviousOrders = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(orderList, "order list is console");
   return (
     <div style={{ boxSizing: "border-box", padding: "1rem" }}>
       <h2 style={{ marginBottom: "1.5rem" }}>Order History</h2>

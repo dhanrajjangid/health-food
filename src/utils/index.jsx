@@ -45,3 +45,18 @@ export const truncatedName = (name, maxCharacters) => {
 
   return shortName;
 };
+
+export function calculateDateAfter(days, dateString) {
+  let date = new Date(dateString);
+  date?.setDate(date?.getDate() + days);
+
+  function formatDate(date) {
+      let day = date?.getDate();
+      let month = date?.toLocaleString('default', { month: 'short' });
+      day = day < 10 ? '0' + day : day;
+      return `${day} ${month}`;
+  }
+  
+  let formattedDate = formatDate(date);
+  return formattedDate;
+}
