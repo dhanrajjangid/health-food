@@ -34,7 +34,7 @@ const HomeSlider = () => {
   }, []);
   return (
     <HomeItems>
-      {products?.map((item, index) => {
+      {products?.slice(0,1)?.map((item, index) => {
         return (
           <div onClick={() => navigate(`/item-detail/${item?._id}`)}>
             <SlideCard

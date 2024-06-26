@@ -22,7 +22,7 @@ const ShippingPolicy = () => {
         <Paragraph>You will receive a confirmation email with tracking information once your order ships. You can track your order online through the carrier's website.</Paragraph>
         
         <SectionTitle>5. Delivery Times</SectionTitle>
-        <Paragraph>The estimated delivery times listed above are for informational purposes only and may vary depending on your location and other factors. We are not responsible for delays in delivery due to unforeseen circumstances beyond our control.</Paragraph>
+        <Paragraph>Your products will be delivered within 7 to 12 days from the date of purchase.</Paragraph>
         
         <SectionTitle>6. International Shipping</SectionTitle>
         <Paragraph>We do not currently offer international shipping.</Paragraph>
