@@ -14,6 +14,7 @@ import { TextField } from "@/components/Common/FormInputs";
 import AuthPopup from "@/components/AuthPopup";
 import Description from "./Components/Description";
 import Reviews from "./Components/Reviews";
+import { Helmet } from "react-helmet-async";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -39,6 +40,10 @@ const ItemDetail = () => {
 
   return (
     <>
+     <Helmet>
+        <title>{productDetails?.name}</title>
+        <meta name="description" content={productDetails?.description} />
+      </Helmet>
       <MainDiv>
         {openLogin && <AuthPopup setOpenLogin={setOpenLogin} />}
         <TopBar>
