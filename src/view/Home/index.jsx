@@ -19,12 +19,12 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <SearchFeature
+      <h2 style={{ marginBottom: "2rem" }}>Crafted with Care</h2>
+      {/* <SearchFeature
         isBack={false}
         isSearchOpen={isSearchOpen}
         setIsSearchOpen={setIsSearchOpen}
-      />
-      <h2 style={{ marginBottom: "2rem" }}>Crafted with Care</h2>
+      /> */}
       <div style={{ marginBottom: "2rem" }}>
         <TabComponent tabs={tabs} />
       </div>

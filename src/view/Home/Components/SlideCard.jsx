@@ -18,7 +18,6 @@ const Image = styled.img`
   width: 100%;
   height: 150px;
   mix-blend-mode: multiply;
-  border-radius: 15px;
   object-fit: cover;
 `;
 
