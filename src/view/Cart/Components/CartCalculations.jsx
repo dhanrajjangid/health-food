@@ -5,16 +5,16 @@ const CartCalculations = ({ totalPrice }) => {
   return (
     <Calculations>
       <TotalPrice>
-        Subtotal: <span>₹{totalPrice?.toFixed(2)}</span>
+        Subtotal: <span>${totalPrice?.toFixed(2)}</span>
       </TotalPrice>
       <TotalPrice>
-        Discount: <span>₹{'0.00'}</span>
+        Discount: <span>${'0.00'}</span>
       </TotalPrice>
       <TotalPrice>
-        Tax: <span>₹{'0.00'}</span>
+        Tax: <span>${'0.00'}</span>
       </TotalPrice>
       <TotalPrice>
-        Total: <span>₹{totalPrice?.toFixed(2)}</span>
+        Total: <span>${totalPrice?.toFixed(2)}</span>
       </TotalPrice>
     </Calculations>
   );

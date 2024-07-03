@@ -78,7 +78,7 @@ const SlideCard = ({ imageSrc, name, price, maxCharacters = 50 }) => {
             gap: "0.5rem",
           }}
         >
-          <Price>₹{price}</Price>
+          <Price>${price}</Price>
           <RatingContainer>
             <Stars>{renderStars(4.5)}</Stars>
             <RatingCount>(2)</RatingCount>

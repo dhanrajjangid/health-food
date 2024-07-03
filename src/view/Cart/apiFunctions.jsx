@@ -52,9 +52,9 @@ export const useCart = () => {
       const options = {
         key: razor_key_id, 
         amount: amount,
-        currency: 'INR',
+        currency: 'USD',
         name: 'Dhanraj Jangid',
-        description: 'Test Transaction',
+        description: 'Buy Transaction',
         order_id: razorpayOrderId,
         handler: async (response) => {
           const { razorpay_payment_id, razorpay_signature } = response;
@@ -77,11 +77,11 @@ export const useCart = () => {
             alert('Payment verification failed');
           }
         },
-        prefill: {
-          name: 'Test User',
-          email: 'test.user@example.com',
-          contact: '9999999999'
-        },
+        // prefill: {
+        //   name: 'Test User',
+        //   email: 'test.user@example.com',
+        //   contact: '9999999999'
+        // },
         theme: {
           color: '#3399cc'
         }

@@ -32,7 +32,7 @@ const CartItem = ({ item, handleDelete, maxCharacters = 32 }) => {
             x
           </DeleteButton>
           <ProductPrice>
-            ₹{(item?.productId?.price * item?.quantity)?.toFixed(2)}
+            ${(item?.productId?.price * item?.quantity)?.toFixed(2)}
           </ProductPrice>
         </ProductAction>
       </ProductInfo>

@@ -30,7 +30,7 @@ const Description = ({ productDetails }) => {
         {activeTab === "specifications" && (
           <AdditionalDetails>
             <DetailItem>
-              <strong>Dimensions:</strong> {productDetails?.dimensions?.length || ' (L x W x H) = (3.9 x 3.9 x 10.0) Inch.'}
+              <strong>Dimensions:</strong> {productDetails?.dimensions?.length || ' (L x W x H) = (15 x 6 x 18) cm.'}
             </DetailItem>
             <DetailItem>
               <strong>Color:</strong> {productDetails?.color}
@@ -44,8 +44,10 @@ const Description = ({ productDetails }) => {
           </AdditionalDetails>
         )}
         {activeTab === "howToUse" && (
-          <p>Place it on a shelf, mantelpiece, or side table to add aesthetic appeal to your living room,
-             bedroom, or any other suitable space.</p>
+          <p>
+          Adjust the straps for a comfortable fit and secure the pack.
+          Organize training essentials in the main compartment and smaller pockets.
+          Wear the pack during training sessions, keeping treats, toys, and tools easily accessible.</p>
         )}
       </TabContent>
     </DescriptionContainer>

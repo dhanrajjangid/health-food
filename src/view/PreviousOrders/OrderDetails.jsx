@@ -79,7 +79,7 @@ const OrderDetails = ({ maxCharacters = 32 }) => {
                   <p>
                     {item?.name && truncatedName(item?.name, maxCharacters)}
                   </p>
-                  <p>Price: ₹{item.price}</p>
+                  <p>Price: ${item.price}</p>
                   <p>Quantity: {item.quantity}</p>
                 </ItemDetails>
               </Item>
@@ -114,7 +114,7 @@ const OrderDetails = ({ maxCharacters = 32 }) => {
             },
           ].map((item, index) => (
             <SummaryItem key={index} isBold={item.isBold}>
-              <span>{item.label} </span> <span>₹{item.value}</span>
+              <span>{item.label} </span> <span>${item.value}</span>
             </SummaryItem>
           ))}
         </TopBox>
