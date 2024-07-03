@@ -77,11 +77,11 @@ export const useCart = () => {
             alert('Payment verification failed');
           }
         },
-        // prefill: {
-        //   name: 'Test User',
-        //   email: 'test.user@example.com',
-        //   contact: '9999999999'
-        // },
+        prefill: {
+          name: '',
+          email: 'test.user@example.com',
+          contact: '9999999999'
+        },
         theme: {
           color: '#3399cc'
         }
