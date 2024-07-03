@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 export const useCart = () => {
   const navigate = useNavigate();
   const razor_key_id = import.meta.env.REACT_APP_RAZORPAY_KEY_ID
+  const name = JSON.parse(localStorage.getItem("user"))?.name;
 
   const getCartItems = async ({ player_id, setCartItems }) => {
     try {
@@ -53,7 +54,7 @@ export const useCart = () => {
         key: razor_key_id, 
         amount: amount,
         currency: 'USD',
-        name: 'Dhanraj Jangid',
+        name: name,
         description: 'Buy Transaction',
         order_id: razorpayOrderId,
         handler: async (response) => {
