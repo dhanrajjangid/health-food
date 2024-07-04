@@ -34,7 +34,7 @@ const HomeSlider = () => {
   }, []);
   return (
     <HomeItems>
-      {products?.filter((item)=> item?._id === '6648a84b2b32b21f498b7b0a')?.map((item, index) => {
+      {products?.filter((item)=> item?._id === '6648a8462b32b21f498b7b08')?.map((item, index) => {
         return (
           <div onClick={() => navigate(`/item-detail/${item?._id}`)}>
             <SlideCard

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // Example data (replace with your actual data)
 const reviews = [
   { id: 1, author: 'Supreet Pawar', date: 'June 15, 2024', rating: 4, content: 'Great product, very satisfied!' },
-  { id: 2, author: 'Tara Sharma', date: 'June 8, 2024', rating: 5, content: 'Best best gift for my sister.' },
+  { id: 2, author: 'Tara Sharma', date: 'June 8, 2024', rating: 5, content: 'Best and creative product.' },
   // Add more reviews as needed
 ];
 

@@ -29,9 +29,9 @@ const Description = ({ productDetails }) => {
       <TabContent>
         {activeTab === "specifications" && (
           <AdditionalDetails>
-            <DetailItem>
+            {/* <DetailItem>
               <strong>Dimensions:</strong> {productDetails?.dimensions?.length || ' (L x W x H) = (15 x 6 x 18) cm.'}
-            </DetailItem>
+            </DetailItem> */}
             <DetailItem>
               <strong>Color:</strong> {productDetails?.color}
             </DetailItem>
@@ -45,9 +45,10 @@ const Description = ({ productDetails }) => {
         )}
         {activeTab === "howToUse" && (
           <p>
-          Adjust the straps for a comfortable fit and secure the pack.
-          Organize training essentials in the main compartment and smaller pockets.
-          Wear the pack during training sessions, keeping treats, toys, and tools easily accessible.</p>
+            Perfect for storing keys, cash, and other small items discreetly.
+            Ideal for home, office, or travel. Enjoy peace of mind knowing your
+            belongings are safely hidden in plain sight.
+          </p>
         )}
       </TabContent>
     </DescriptionContainer>

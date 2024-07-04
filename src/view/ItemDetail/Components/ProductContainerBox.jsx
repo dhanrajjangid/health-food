@@ -37,19 +37,15 @@ export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
   };
   const images = [
     productDetails?.imageUrl,
-    "https://ae01.alicdn.com/kf/S5af46917104f45cdbe66770e0467369ck.jpg_640x640Q90.jpg_.webp",
+    "https://ae01.alicdn.com/kf/S02812e76fce84737b87df5b912e0b8a87/Aquafina-Water-Bottle-Diversion-Safe-Can-Stash-Hidden-Security-Container-With-A-Food-Grade-Smell-Proof.jpg_.webp",
 
-    "https://ae01.alicdn.com/kf/Sc2220e9ac2384419aeb205f7866691879.jpg_640x640Q90.jpg_.webp",
+    "https://ae01.alicdn.com/kf/S5d2a11a63830455fa36de87808b6c4acz/Aquafina-Water-Bottle-Diversion-Safe-Can-Stash-Hidden-Security-Container-With-A-Food-Grade-Smell-Proof.jpg_.webp",
 
-    "https://ae01.alicdn.com/kf/Sb38f68ad5455494899c8516d6a7219fep.jpg_640x640Q90.jpg_.webp",
+    "https://ae01.alicdn.com/kf/S252492ab3b3e48688085f3609cdfe331e/Aquafina-Water-Bottle-Diversion-Safe-Can-Stash-Hidden-Security-Container-With-A-Food-Grade-Smell-Proof.jpg_.webp",
 
-    "https://ae01.alicdn.com/kf/Sc35f01cd346943b3a3ef78160ca1c5f6j.jpg_640x640Q90.jpg_.webp",
+    "https://ae01.alicdn.com/kf/S0d206777cdab4ca59e7a326c8ba0e5924/Aquafina-Water-Bottle-Diversion-Safe-Can-Stash-Hidden-Security-Container-With-A-Food-Grade-Smell-Proof.jpg_.webp",
 
-    "https://ae01.alicdn.com/kf/S6dfd02b1be8f4477ad9f52adbebe4e62H.jpg_640x640Q90.jpg_.webp",
-
-    "https://ae01.alicdn.com/kf/S7dfa47892e424c60a1a94c785732a3e21.jpg_640x640Q90.jpg_.webp",
-
-    "https://ae01.alicdn.com/kf/Sb72342cba0f346b39967d41da16412a4n.jpg_640x640Q90.jpg_.webp",
+    
   ];
   return (
     <ProductContainer>
