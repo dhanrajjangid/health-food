@@ -45,9 +45,15 @@ const Description = ({ productDetails }) => {
         )}
         {activeTab === "howToUse" && (
           <p>
-            Perfect for storing keys, cash, and other small items discreetly.
-            Ideal for home, office, or travel. Enjoy peace of mind knowing your
-            belongings are safely hidden in plain sight.
+            Equipped with USB charging cable, no need to fix the power supply,
+            where to go to use. This table lamp also has 3/16 light colors
+            temperature, intimate and convenient, delicate and comfortable,
+            natural and soft.
+            <br />
+            This is the perfect gift for anyone who loves lighting up their
+            space! Also a novel and lovely gift for family friends and lovers.
+            I'm sure they will be very happy to receive this on Valentine's Day,
+            Mother's Day, Father's Day or their birthday.
           </p>
         )}
       </TabContent>

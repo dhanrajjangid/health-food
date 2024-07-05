@@ -37,15 +37,13 @@ export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
   };
   const images = [
     productDetails?.imageUrl,
-    "https://ae01.alicdn.com/kf/S02812e76fce84737b87df5b912e0b8a87/Aquafina-Water-Bottle-Diversion-Safe-Can-Stash-Hidden-Security-Container-With-A-Food-Grade-Smell-Proof.jpg_.webp",
+    "https://ae01.alicdn.com/kf/S3933241dbfe243b7b5ab3f216ee2bb652/Dynamic-Rotating-Water-Ripple-Projector-Night-Light-3-16-Colors-Flame-Crystal-Lamp-for-Living-Room.jpg_.webp",
 
-    "https://ae01.alicdn.com/kf/S5d2a11a63830455fa36de87808b6c4acz/Aquafina-Water-Bottle-Diversion-Safe-Can-Stash-Hidden-Security-Container-With-A-Food-Grade-Smell-Proof.jpg_.webp",
+    "https://ae01.alicdn.com/kf/S5e71680130544423b07bf121cb9f6460H/Dynamic-Rotating-Water-Ripple-Projector-Night-Light-3-16-Colors-Flame-Crystal-Lamp-for-Living-Room.jpg_.webp",
 
-    "https://ae01.alicdn.com/kf/S252492ab3b3e48688085f3609cdfe331e/Aquafina-Water-Bottle-Diversion-Safe-Can-Stash-Hidden-Security-Container-With-A-Food-Grade-Smell-Proof.jpg_.webp",
+    "https://ae01.alicdn.com/kf/S3417bf211c284bf68a493e03199fe935g/Dynamic-Rotating-Water-Ripple-Projector-Night-Light-3-16-Colors-Flame-Crystal-Lamp-for-Living-Room.jpg_.webp",
 
-    "https://ae01.alicdn.com/kf/S0d206777cdab4ca59e7a326c8ba0e5924/Aquafina-Water-Bottle-Diversion-Safe-Can-Stash-Hidden-Security-Container-With-A-Food-Grade-Smell-Proof.jpg_.webp",
-
-    
+    "https://ae01.alicdn.com/kf/S3933241dbfe243b7b5ab3f216ee2bb652/Dynamic-Rotating-Water-Ripple-Projector-Night-Light-3-16-Colors-Flame-Crystal-Lamp-for-Living-Room.jpg_.webp",
   ];
   return (
     <ProductContainer>
@@ -64,7 +62,7 @@ export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
           <Category>{productDetails?.category}</Category>
           <RatingContainer>
             <Stars>{renderStars(productDetails?.rating || 4.5)}</Stars>
-            <RatingCount>({productDetails?.ratingCount || 2})</RatingCount>
+            <RatingCount>({productDetails?.ratingCount || 122})</RatingCount>
           </RatingContainer>
         </div>
         <Title>{productDetails?.name}</Title>
@@ -73,7 +71,18 @@ export const ProductContainerBox = ({ setOpenLogin, productDetails }) => {
             "This is the details part of this food and we are committed to providing you with the best healthy food at an affordable range available in this city."}
         </Description>
         <Description>In Stock: {productDetails?.stockQuantity}</Description>
-        <Price>${productDetails?.price}</Price>
+        <Price>
+          ${productDetails?.price}{" "}
+          <span
+            style={{
+              color: "red",
+              textDecoration: "line-through",
+              fontSize: "1rem",
+            }}
+          >
+            $29.99
+          </span>
+        </Price>
         <ButtonContainer>
           <ContainedButton
             disabled={!(productDetails?.stockQuantity > 0)}
