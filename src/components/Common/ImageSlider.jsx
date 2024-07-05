@@ -7,7 +7,7 @@ const ImageSliderContainer = styled.div`
   width: 300px;
   height: 300px;
   overflow: hidden;
-  border-radius: 15px;
+  // border-radius: 15px;
   background-color: #f0f0f0; // Add a background color to avoid white gaps
 
   @media (max-width: 768px) {
